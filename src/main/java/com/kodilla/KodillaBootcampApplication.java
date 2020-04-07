@@ -8,6 +8,11 @@ public class KodillaBootcampApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KodillaBootcampApplication.class, args);
+
+        Calculator calculator = new Calculator();
+        calculator.AddValues();
+        calculator.SubtractValues();
+
     }
 
 }
