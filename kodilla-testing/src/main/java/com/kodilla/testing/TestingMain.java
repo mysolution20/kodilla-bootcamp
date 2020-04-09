@@ -7,18 +7,18 @@ public class TestingMain {
     public static void main(String[] args){
 
 
-        System.out.println("*************************************************");
+/*        System.out.println("*************************************************");
         System.out.println("Test - pierwszy test jednostkowy:");
         System.out.println();
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
-        String result = simpleUser.getUsername();
+        SimpleUser simpleUser = new SimpleUser("theForumUser", "Jan Kowalski");
+        String result = simpleUser.getUserName();
         if (result.equals("theForumUser")){
             System.out.println("test OK");
         } else {
             System.out.println("Error!");
-        }
+        }*/
 
-        System.out.println("*************************************************");
+  /*      System.out.println("*************************************************");
         System.out.println("Testing Calculator class");
         System.out.println();
         Calculator calc = new Calculator();
@@ -29,8 +29,6 @@ public class TestingMain {
         } else {
             System.out.println("Calculator has error!");
         }
-
-
-
+*/
     }
 }
