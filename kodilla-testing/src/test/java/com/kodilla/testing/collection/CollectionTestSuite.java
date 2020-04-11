@@ -3,6 +3,8 @@ package com.kodilla.testing.collection;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class CollectionTestSuite {      // OddNumbersExterminatorTest
@@ -27,10 +29,14 @@ public class CollectionTestSuite {      // OddNumbersExterminatorTest
         List<Integer> newNumbers = new ArrayList<>();
 
         //Then
-        for (Integer integer : oddNumbersExterminator.exterminate(newNumbers)) {
+        List<Integer> result = oddNumbersExterminator.exterminate(newNumbers);
+        Assert.assertTrue("NewNumbers List is null", result.isEmpty());
+
+/*        for (Integer integer : oddNumbersExterminator.exterminate(newNumbers)) {
 
             Assert.assertTrue("NewNumbers List is null", newNumbers.isEmpty());
-        }
+        }*/
+
 
     }
 
