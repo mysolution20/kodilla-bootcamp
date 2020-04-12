@@ -42,13 +42,21 @@ public class ShapeCollectorTestSuite {
     public void testRemoveFigure() {
         //Given
         List<Shape> figures = new ArrayList<>();
-        Square square = new Square();
+        Shape square = new Square();
+        Shape circle = new Circle();
+        Shape triangle = new Triangle();
 
         //When
+        figures.add(square);
+        figures.add(square);
+        figures.add(circle);
+        figures.add(triangle);
+
         figures.remove(square);
 
         //Then
-        Assert.assertEquals(0, figures.size());
+        // ( add * 4 ) less 1  Then 3  for assert to test
+        Assert.assertEquals(3, figures.size());
     }
 
     @Test
