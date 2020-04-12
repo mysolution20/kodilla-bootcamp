@@ -35,7 +35,7 @@ public class ShapeCollectorTestSuite {
         figures.add(circle);
 
         //Then
-        Assert.assertEquals("Circle", circle.getShapeName());
+        Assert.assertEquals(1, figures.size());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ShapeCollectorTestSuite {
         figures.remove(square);
 
         //Then
-        Assert.assertEquals("Square", square.getShapeName());
+        Assert.assertEquals(0, figures.size());
     }
 
     @Test
