@@ -5,9 +5,16 @@ import java.util.List;
 
 public class ShapeCollector {
 
+    Shape shape;
+
+    public ShapeCollector(Shape shape) {
+        this.shape = shape;
+    }
+
     List<Shape> figures = new ArrayList<>();
 
     public void addFigure(Shape shape) {
+
         figures.add(shape);
     }
 
@@ -15,13 +22,15 @@ public class ShapeCollector {
         figures.remove(shape);
     }
 
-    public String getFigure(int n) {
-        return figures.get(n).getShapeName().toString();
+    public Shape getFigure() {
+
+        return this.shape;
+
     }
 
     public void showFigures() {
         for (Shape shape : figures) {
-            System.out.println(shape.getShapeName().toString());
+             System.out.println(shape.getShapeName());
         }
 
     }
