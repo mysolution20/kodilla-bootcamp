@@ -31,7 +31,6 @@ public class CollectionTestSuite {      // OddNumbersExterminatorTest
         //Then
         List<Integer> result = oddNumbersExterminator.exterminate(newNumbers);
         Assert.assertTrue("NewNumbers List is null", result.isEmpty());
-
 /*        for (Integer integer : oddNumbersExterminator.exterminate(newNumbers)) {
 
             Assert.assertTrue("NewNumbers List is null", newNumbers.isEmpty());
