@@ -1,4 +1,14 @@
 package com.kodilla.testing.shape;
 
-public class square {
+public class Square implements Shape{
+
+     public String getShapeName() {
+        return "Square";
+    }
+
+    public double getField() {
+        double sideLength = 2;
+        return  sideLength * sideLength;
+
+    }
 }
