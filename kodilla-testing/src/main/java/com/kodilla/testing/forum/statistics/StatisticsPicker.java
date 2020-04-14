@@ -7,16 +7,19 @@ import java.util.*;
 
 public class StatisticsPicker {
 
-    private String userName;
-    private String forumPost;
-    private String forumComment;
-    private int numOfPosts;
+    private final String userName;
+    private final String forumPost;
+    private final String forumComment;
+    private int numOfPosts ;
     private int numOfComments;
     Statistics statistics;
 
-    public StatisticsPicker(String userName) {
-        this.userName = userName;
+
+    public void calculateAdvStatistics(Statistics statistics){
+        numOfPosts = statistics.postsCount();
+
     }
+
 
     public StatisticsPicker(String userName, String forumPost, String forumComment) {
         this.userName = userName;

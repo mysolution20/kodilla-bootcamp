@@ -1,4 +1,5 @@
 rootProject.name = 'kodilla-bootcamp'
 include 'kodilla-testing'
 include 'kodilla-temp'
+include 'kodilla-stream'
 
