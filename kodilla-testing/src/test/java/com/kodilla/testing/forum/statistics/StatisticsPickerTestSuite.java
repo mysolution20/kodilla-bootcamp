@@ -15,7 +15,7 @@ public class StatisticsPickerTestSuite {
 
         //Given
         Statistics usersNamesMock = mock(Statistics.class);
-        Statistics statisticsPicker = new CalculateStatistics(usersNamesMock);
+//        StatisticsPicker statisticsPicker = new StatisticsPicker(usersNamesMock);
 
         List<String> usersNames = new ArrayList<>();      // list of users names
         usersNames.add("mrsmith");
