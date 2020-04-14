@@ -1,9 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.forum.statistics.Statistics;
-import com.kodilla.testing.forum.statistics.StatisticsPicker;
-
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,6 +15,7 @@ public class StatisticsPickerTestSuite {
 
         //Given
         Statistics usersNamesMock = mock(Statistics.class);
+        Statistics statisticsPicker = new CalculateStatistics(usersNamesMock);
 
         List<String> usersNames = new ArrayList<>();      // list of users names
         usersNames.add("mrsmith");
@@ -28,7 +25,7 @@ public class StatisticsPickerTestSuite {
         usersNames.add("mrmuller");
 
         when(usersNamesMock.usersNames()).thenReturn(usersNames);
-        Statistics statistics = new StatisticsPicker( );
+//        Statistics statistics = new StatisticsPicker( );
 
 
         //When
