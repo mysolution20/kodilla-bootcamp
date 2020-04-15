@@ -1,10 +1,5 @@
 package com.kodilla.testing.library;
 
-import com.kodilla.testing.shape.Circle;
-import com.kodilla.testing.shape.Shape;
-import com.kodilla.testing.shape.Square;
-import com.kodilla.testing.shape.Triangle;
-import javafx.beans.binding.When;
 import org.junit.*;
 
 import java.util.ArrayList;
@@ -33,29 +28,79 @@ public class BookDirectoryTestSuite {
         System.out.println("Preparing to execute Library test #" + testCounter);
     }
 
-    @Test
-    public void testlistBooksInHandsOf() {
-        // Given
 
-        List<Shape> figures = new ArrayList<>();
-        Shape square = new Square();
-        Shape circle = new Circle();
-        Shape triangle = new Triangle();
+
+    @Test
+    public void testlistof0BooksInHandsOf() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+         LibraryUser libraryUser = new LibraryUser("Adam","Kowal","123");
+
+
+        List<Book> books = new ArrayList<>();
 
         //When
-        figures.add(square);
-        figures.add(square);
-        figures.add(circle);
-        figures.add(triangle);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(books);
 
-        figures.remove(square);
 
         //Then
-        // ( add * 4 ) less 1  Then 3  for assert to test
-        Assert.assertEquals(3, figures.size());
+        Assert.assertEquals(0,bookLibrary.listBooksInHandsOf(libraryUser).size());
 
     }
 
+    @Test
+    public void testlistof1BooksInHandsOf() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+        LibraryUser libraryUser = new LibraryUser("Adam","Kowal","123");
+
+        Book book1 = new Book("W pustyni i na skale","Heniek Kowal",2000);
+
+        List<Book> books = new ArrayList<>();
+        books.add(book1);
+
+        //When
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(books);
+
+
+        //Then
+        Assert.assertEquals(1,bookLibrary.listBooksInHandsOf(libraryUser).size());
+
+    }
+
+    @Test
+    public void testlistof5BooksInHandsOf() {
+        // Given
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+
+        LibraryUser libraryUser = new LibraryUser("Adam","Kowal","123");
+
+        Book book1 = new Book("W pustyni i na skale","Heniek Kowal",2000);
+        Book book2 = new Book("Książka kucharska tom 1","Danuta Nowak",2010);
+        Book book3 = new Book("Książka kucharska tom 2","Danuta Nowak",2011);
+        Book book4 = new Book("Książka kucharska tom 3","Danuta Nowak",2012);
+        Book book5 = new Book("Książka kucharska tom 4","Danuta Nowak",2013);
+
+        List<Book> books = new ArrayList<>();
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+        books.add(book4);
+        books.add(book5);
+
+        //When
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(books);
+
+
+        //Then
+        Assert.assertEquals(5,bookLibrary.listBooksInHandsOf(libraryUser).size());
+
+    }
 
 
     @Test

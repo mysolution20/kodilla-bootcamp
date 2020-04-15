@@ -7,17 +7,17 @@ public final class ForumUser {
 
 //    private final int userId ;
 
-private final int userId ;
+    private final int userId ;
     private final String userName;
     private final  char gender;
-    private final  LocalTime birthDay;  // this.localTime = LocalTime.of( hour, minute);
+    private final  LocalTime birthDay;  // this.localTime = LocalTime.of( year,month, day);
     private final int numberOfPosts ;
 
-    public ForumUser(int userId, String userName, char gender, LocalTime birthDay, int numberOfPosts) {
+    public ForumUser(int userId, String userName, char gender ,int year, int month, int day, int numberOfPosts) {
         this.userId = userId;
         this.userName = userName;
         this.gender = gender;
-        this.birthDay = birthDay;
+        this.birthDay = LocalTime.of( year,month, day);
         this.numberOfPosts = numberOfPosts;
     }
 

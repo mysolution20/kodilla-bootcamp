@@ -1,48 +1,42 @@
 package com.kodilla.testing.forum.statistics;
-import com.kodilla.testing.forum.ForumComment;
-import com.kodilla.testing.forum.ForumPost;
-import com.kodilla.testing.forum.ForumUser;
-
-import java.util.*;
 
 public class StatisticsPicker {
 
-    private final String userName;
-    private final String forumPost;
-    private final String forumComment;
-    private int numOfPosts ;
+    private int numOfUsers;
+    private int numOfPosts;
     private int numOfComments;
-    Statistics statistics;
 
 
-    public void calculateAdvStatistics(Statistics statistics){
+    private int avgNumOfPostPerUser;
+    private int avgNumOfCommentsPerUser;
+    private int avgNumOfCommentsPerPost;
+
+
+    public void calculateAdvStatistics(Statistics statistics) {
         numOfPosts = statistics.postsCount();
+        numOfUsers = statistics.usersNames().size();
+        numOfComments = statistics.commentsCount();
+        avgNumOfPostPerUser = numOfPosts / numOfUsers;
+        avgNumOfCommentsPerUser = numOfComments / numOfUsers;
+        avgNumOfCommentsPerPost = numOfComments / numOfPosts;
 
     }
 
+    public void showStatistics() {
 
-    public StatisticsPicker(String userName, String forumPost, String forumComment) {
-        this.userName = userName;
-        this.forumPost = forumPost;
-        this.forumComment = forumComment;
+        System.out.println(
+                "Number of posts =: " + numOfPosts + ",\n" +
+                "Number of users =: " + numOfUsers + ",\n" +
+                "Number of comments =: " + numOfComments + ",\n" +
+                "Average posts per user =: " + avgNumOfPostPerUser + ",\n" +
+                "Average post per user =: " + avgNumOfPostPerUser + ",\n" +
+                "Average comment per post =: " + avgNumOfCommentsPerPost
+
+        );
     }
 
-    public int calculateNumberOfUsers(String userName)    {
-        Set<String>  userList = new HashSet<>();
-        userList.add(userName);
-        return  userList.size();
-    }
-
-    public void postsCount(String forumPost)    {
-        List<String>  postsList = new ArrayList<>();
-        postsList.add(forumPost);
-        numOfPosts =   postsList.size();
-    }
-
-    public void commentsCount(String forumComment)    {
-        List<String>  commentList = new ArrayList<>();
-        commentList.add(forumComment);
-        numOfComments =  commentList.size();
+    public int getNumOfUsers() {
+        return numOfUsers;
     }
 
     public int getNumOfPosts() {
@@ -53,19 +47,15 @@ public class StatisticsPicker {
         return numOfComments;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        StatisticsPicker that = (StatisticsPicker) o;
-        return Objects.equals(userName, that.userName) &&
-                Objects.equals(forumPost, that.forumPost) &&
-                Objects.equals(forumComment, that.forumComment);
+    public int getAvgNumOfPostPerUser() {
+        return avgNumOfPostPerUser;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(userName, forumPost, forumComment);
+    public int getAvgNumOfCommentsPerUser() {
+        return avgNumOfCommentsPerUser;
+    }
+
+    public int getAvgNumOfCommentsPerPost() {
+        return avgNumOfCommentsPerPost;
     }
 }

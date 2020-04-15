@@ -26,9 +26,9 @@ public class BookLibrary {
 
    }*/
 
-   // 2.   Implementacja metody
+    // 2.   Implementacja metody
 
-    public List<Book> listBooksWithCondition(String titleFragment){
+    public List<Book> listBooksWithCondition(String titleFragment) {
 
 
         List<Book> bookList = new ArrayList<Book>();
@@ -45,33 +45,13 @@ public class BookLibrary {
     }
 
 
-
     // 1. temporary returning list of one LibraryUser
 
-   public List<LibraryUser> listBooksInHandsOf(LibraryUser libraryUser){
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
 
-    List<LibraryUser> usersList = new ArrayList<>();
-    LibraryUser userList1 = new LibraryUser("Adam","Nowak", "123");
-    LibraryUser userList2 = new LibraryUser("Grzegorz","Kowal", "456");
-    LibraryUser userList3 = new LibraryUser("Agnieszka","Kowalska", "789");
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
 
-    usersList.add(userList1);
-    usersList.add(userList2);
-    usersList.add(userList3);
-
-    return usersList;
-
-   }
-
-//    HashMap<LibraryUser, Book> borrowList = new HashMap<>();
-//
-//    public void addBookBorrow(LibraryUser libraryUser,Book book){
-//
-//        ForumComment borrow = new ForumComment(libraryUser, book);
-//        borrowList.put(borrow);
-//    }
-
-
+    }
 
 
 }
