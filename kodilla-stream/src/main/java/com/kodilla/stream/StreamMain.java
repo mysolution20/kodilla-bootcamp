@@ -1,6 +1,7 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.beautifier.PoemDecorator;
 import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.reference.FunctionalCalculator;
@@ -8,38 +9,33 @@ import com.kodilla.stream.reference.FunctionalCalculator;
 public class StreamMain {
     public static void main(String[] args){
 
-        String textSample = "AbEcAdLo Z pIeCa SpAdLo";
-        String textSample2 = textSample.toLowerCase();
+        String textSample1 = "AbEcAdLo Z pIeCa SpAdLo";
+        String textSample2 = textSample1.toLowerCase();
         String textSample3 = textSample2.toUpperCase();
-        String textSample4 = textSample3.replaceAll("ABECADLO","JAJKO");
+        String textSample4 = textSample3.replaceAll("ABECADLO","tranwaj");
 
+        System.out.println("********************************");
+        System.out.println();
 
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        System.out.println("**********************");
-        System.out.println();
-
-        poemBeautifier.beautify(()-> System.out.println("--abc--"));
-        poemBeautifier.beautify(()-> System.out.println(textSample));
-        poemBeautifier.beautify(()-> System.out.println(textSample2));
-        poemBeautifier.beautify(()-> System.out.println(textSample+textSample2));
-        poemBeautifier.beautify(()-> System.out.println(textSample+" "+textSample2));
-        poemBeautifier.beautify(()-> System.out.println(textSample+" "+textSample2+" "+textSample3));
-        poemBeautifier.beautify(()-> System.out.println(textSample4));
-        poemBeautifier.beautify(()-> System.out.println(textSample4.replaceAll(textSample4,textSample3)));
+        poemBeautifier.beautify(textSample1 ,(tekst) -> tekst );
+        poemBeautifier.beautify(textSample2 ,(tekst) -> tekst );
+        poemBeautifier.beautify(textSample3 ,(tekst) -> tekst );
+        poemBeautifier.beautify(textSample4 ,(tekst) -> tekst );
 
 
         System.out.println();
-        System.out.println("**********************");
-        System.out.println();
+        System.out.println("********************************");
+
+
+//        System.out.println();
+//        System.out.println("**********************");
+//        System.out.println();
 
 
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(20);
-
-
-
-
 
 /*
         ExpressionExecutor expressionExecutor = new ExpressionExecutor();
