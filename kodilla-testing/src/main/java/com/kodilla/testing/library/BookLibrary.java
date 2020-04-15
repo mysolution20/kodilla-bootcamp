@@ -1,6 +1,10 @@
 package com.kodilla.testing.library;
 
+import com.kodilla.testing.forum.ForumComment;
+import com.kodilla.testing.forum.ForumPost;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class BookLibrary {
@@ -58,5 +62,16 @@ public class BookLibrary {
     return usersList;
 
    }
+
+//    HashMap<LibraryUser, Book> borrowList = new HashMap<>();
+//
+//    public void addBookBorrow(LibraryUser libraryUser,Book book){
+//
+//        ForumComment borrow = new ForumComment(libraryUser, book);
+//        borrowList.put(borrow);
+//    }
+
+
+
 
 }

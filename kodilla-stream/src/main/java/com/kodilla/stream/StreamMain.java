@@ -9,20 +9,17 @@ import com.kodilla.stream.reference.FunctionalCalculator;
 public class StreamMain {
     public static void main(String[] args){
 
-        String textSample1 = "AbEcAdLo Z pIeCa SpAdLo";
-        String textSample2 = textSample1.toLowerCase();
-        String textSample3 = textSample2.toUpperCase();
-        String textSample4 = textSample3.replaceAll("ABECADLO","tranwaj");
+        String text = "AbEcAdLo Z pIeCa SpAdLo";
 
         System.out.println("********************************");
         System.out.println();
 
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        poemBeautifier.beautify(textSample1 ,(tekst) -> tekst );
-        poemBeautifier.beautify(textSample2 ,(tekst) -> tekst );
-        poemBeautifier.beautify(textSample3 ,(tekst) -> tekst );
-        poemBeautifier.beautify(textSample4 ,(tekst) -> tekst );
+        poemBeautifier.beautify(text ,(s) -> s );
+        poemBeautifier.beautify(text ,(s) -> s.toLowerCase() );
+        poemBeautifier.beautify(text ,(s) -> s.toUpperCase() );
+        poemBeautifier.beautify(text ,(s) -> s.replaceAll("ABECADLO","tranwaj") );
 
 
         System.out.println();
