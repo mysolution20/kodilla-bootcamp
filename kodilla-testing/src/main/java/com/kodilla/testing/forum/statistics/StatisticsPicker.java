@@ -1,25 +1,39 @@
 package com.kodilla.testing.forum.statistics;
 
 public class StatisticsPicker {
-
-    private int numOfUsers;
-    private int numOfPosts;
-    private int numOfComments;
-    private int avgNumOfPostPerUser;
-    private int avgNumOfCommentsPerUser;
-    private int avgNumOfCommentsPerPost;
+    private double numOfUsers;
+    private double numOfPosts;
+    private double numOfComments;
+    private double avgNumOfPostPerUser;
+    private double avgNumOfCommentsPerUser;
+    private double avgNumOfCommentsPerPost;
 
     public void calculateAdvStatistics(Statistics statistics) {
-        numOfPosts = statistics.postsCount();
         numOfUsers = statistics.usersNames().size();
+        numOfPosts = statistics.postsCount();
         numOfComments = statistics.commentsCount();
-        avgNumOfPostPerUser = numOfPosts / numOfUsers;
-        avgNumOfCommentsPerUser = numOfComments / numOfUsers;
-        avgNumOfCommentsPerPost = numOfComments / numOfPosts;
+
+        if (numOfUsers == 0) {
+            numOfPosts = 0;
+            numOfComments = 0;
+            avgNumOfPostPerUser = 0;
+            avgNumOfCommentsPerUser = 0;
+            avgNumOfCommentsPerPost = 0;
+        } else {
+            if (numOfPosts == 0) {
+                numOfComments = 0;
+                avgNumOfPostPerUser = 0;
+                avgNumOfCommentsPerPost = 0;
+                avgNumOfCommentsPerUser = 0;
+            } else {
+                avgNumOfPostPerUser = numOfPosts / numOfUsers;
+                avgNumOfCommentsPerUser = numOfComments / numOfUsers;
+                avgNumOfCommentsPerPost = numOfComments / numOfPosts;
+            }
+        }
     }
 
     public void showStatistics() {
-
         System.out.println(
                 "Number of posts =: " + numOfPosts + ",\n" +
                         "Number of users =: " + numOfUsers + ",\n" +
@@ -29,27 +43,28 @@ public class StatisticsPicker {
                         "Average comment per post =: " + avgNumOfCommentsPerPost
         );
     }
-    public int getNumOfUsers() {
+
+    public double getNumOfUsers() {
         return numOfUsers;
     }
 
-    public int getNumOfPosts() {
+    public double getNumOfPosts() {
         return numOfPosts;
     }
 
-    public int getNumOfComments() {
+    public double getNumOfComments() {
         return numOfComments;
     }
 
-    public int getAvgNumOfPostPerUser() {
+    public double getAvgNumOfPostPerUser() {
         return avgNumOfPostPerUser;
     }
 
-    public int getAvgNumOfCommentsPerUser() {
+    public double getAvgNumOfCommentsPerUser() {
         return avgNumOfCommentsPerUser;
     }
 
-    public int getAvgNumOfCommentsPerPost() {
+    public double getAvgNumOfCommentsPerPost() {
         return avgNumOfCommentsPerPost;
     }
 }
