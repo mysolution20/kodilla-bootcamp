@@ -51,11 +51,10 @@ public class ShapeCollectorTestSuite {
         figures.add(square);
         figures.add(circle);
         figures.add(triangle);
-
         figures.remove(square);
 
         //Then
-        // ( add * 4 ) less 1  Then 3  for assert to test
+        // info: ( add * 4 ) less 1  Then 3  for assert to test
         Assert.assertEquals(3, figures.size());
     }
 

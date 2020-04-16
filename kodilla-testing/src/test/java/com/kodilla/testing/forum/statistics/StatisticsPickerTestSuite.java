@@ -53,19 +53,16 @@ public class StatisticsPickerTestSuite {
 
         // Then
 
-        Assert.assertEquals(5,statisticsPicker.getNumOfUsers());
+        Assert.assertEquals(5, statisticsPicker.getNumOfUsers());
 
-        Assert.assertEquals(50,statisticsPicker.getNumOfComments());
+        Assert.assertEquals(50, statisticsPicker.getNumOfComments());
 
-        Assert.assertEquals(10,statisticsPicker.getNumOfPosts());
+        Assert.assertEquals(10, statisticsPicker.getNumOfPosts());
 
         Assert.assertEquals(5, statisticsPicker.getAvgNumOfCommentsPerPost(), 0);
 
         Assert.assertEquals(10, statisticsPicker.getAvgNumOfCommentsPerUser(), 0);
 
         Assert.assertEquals(2, statisticsPicker.getAvgNumOfPostPerUser(), 0);
-
-
     }
-
 }

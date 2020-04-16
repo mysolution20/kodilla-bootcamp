@@ -1,10 +1,7 @@
 package com.kodilla.testing.library;
 
-import com.kodilla.testing.forum.ForumComment;
-import com.kodilla.testing.forum.ForumPost;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class BookLibrary {
@@ -23,7 +20,6 @@ public class BookLibrary {
     bookList.add(book);
 
     return bookList;
-
    }*/
 
     // 2.   Implementacja metody

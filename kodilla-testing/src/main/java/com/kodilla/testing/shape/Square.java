@@ -9,6 +9,5 @@ public class Square implements Shape{
     public double getField() {
         double sideLength = 2;
         return  sideLength * sideLength;
-
     }
 }

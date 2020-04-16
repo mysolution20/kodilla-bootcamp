@@ -3,8 +3,6 @@ package com.kodilla.testing.collection;
 import org.junit.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class CollectionTestSuite {      // OddNumbersExterminatorTest
@@ -35,8 +33,6 @@ public class CollectionTestSuite {      // OddNumbersExterminatorTest
 
             Assert.assertTrue("NewNumbers List is null", newNumbers.isEmpty());
         }*/
-
-
     }
 
     @Test
@@ -55,8 +51,5 @@ public class CollectionTestSuite {      // OddNumbersExterminatorTest
         for (Integer i : oddNumbersExterminator.exterminate(newNumbers)) {
             Assert.assertEquals("Numbers from newNumbers List are odd", 0, i % 2);
         }
-
     }
-
-
 }

@@ -36,6 +36,4 @@ public class ForumPost {
         result = 31 * result + getAuthor().hashCode();
         return result;
     }
-
-
 }

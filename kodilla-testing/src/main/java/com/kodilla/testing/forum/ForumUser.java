@@ -8,10 +8,12 @@ public class ForumUser {
 
     private String name;
     private String realName;
-
     private List<ForumPost> posts = new ArrayList<>();
     private List<ForumComment> comments = new LinkedList<>();
-    public ForumUser(){}
+
+    public ForumUser() {
+    }
+
     public ForumUser(String name, String realName) {
         this.name = name;
         this.realName = realName;
@@ -20,30 +22,30 @@ public class ForumUser {
 //-------------------------------------------------------------------
 
     // 1b
-    public void addPost(String author, String postBody){
+    public void addPost(String author, String postBody) {
         ForumPost thePost = new ForumPost(postBody, author);
         posts.add(thePost);
     }
 
     // 2b
-    public void addComment(ForumPost thePost, String author, String commentBody){
+    public void addComment(ForumPost thePost, String author, String commentBody) {
         ForumComment theComment = new ForumComment(thePost, commentBody, author);
         comments.add(theComment);
     }
 
     // 1a
-    public int getPostsQuantity(){
+    public int getPostsQuantity() {
 
         return posts.size();
     }
 
     // 2a
-    public int getCommentsQuantity(){
+    public int getCommentsQuantity() {
         return comments.size();
     }
 
     // 3a
-    public ForumPost getPost(int postNumber){
+    public ForumPost getPost(int postNumber) {
 
         ForumPost thePost = null;
         if (postNumber >= 0 && postNumber < posts.size()) {
@@ -53,20 +55,20 @@ public class ForumUser {
     }
 
     // 3b
-    public ForumComment getComment(int commentNumber){
+    public ForumComment getComment(int commentNumber) {
 
         ForumComment theComment = null;
-        if (commentNumber >= 0 && commentNumber < comments.size()){
+        if (commentNumber >= 0 && commentNumber < comments.size()) {
             theComment = comments.get(commentNumber);
         }
         return theComment;
     }
 
     // 4a
-    public boolean removePost(ForumPost thePost){
+    public boolean removePost(ForumPost thePost) {
 
         boolean result = false;
-        if (posts.contains(thePost)){
+        if (posts.contains(thePost)) {
             posts.remove(thePost);
             result = true;
         }
@@ -74,10 +76,10 @@ public class ForumUser {
     }
 
     // 4b
-    public boolean removeComment(ForumComment theComment){
+    public boolean removeComment(ForumComment theComment) {
 
         boolean result = false;
-        if (comments.contains(theComment)){
+        if (comments.contains(theComment)) {
             comments.remove(theComment);
             result = true;
         }

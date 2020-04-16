@@ -42,6 +42,4 @@ public class ForumComment {
         result = 31 * result + getAuthor().hashCode();
         return result;
     }
-
-
 }

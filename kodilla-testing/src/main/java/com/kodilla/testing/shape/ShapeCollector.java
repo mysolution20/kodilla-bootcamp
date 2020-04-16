@@ -14,7 +14,6 @@ public class ShapeCollector {
     List<Shape> figures = new ArrayList<>();
 
     public void addFigure(Shape shape) {
-
         figures.add(shape);
     }
 
@@ -23,17 +22,12 @@ public class ShapeCollector {
     }
 
     public Shape getFigure() {
-
         return this.shape;
-
     }
 
     public void showFigures() {
         for (Shape shape : figures) {
-             System.out.println(shape.getShapeName());
+            System.out.println(shape.getShapeName());
         }
-
     }
-
-
 }
