@@ -12,7 +12,7 @@ public final class ForumUser {
     private  int year;
     private  int month;
     private  int day;
-    private final LocalDate birthDay ;  //   LocalDate  this.localTime = LocalDate.of( year,month, day);
+    private final LocalDate birthDay ;
     private final int numberOfPosts ;
 
     public ForumUser(int userId, String userName, char gender, int year, int month, int day, int numberOfPosts) {
