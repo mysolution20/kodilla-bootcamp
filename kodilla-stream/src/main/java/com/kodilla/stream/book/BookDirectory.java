@@ -5,7 +5,6 @@ import java.util.List;
 
 public final class BookDirectory {
 
-
     private final List<Book> theBookList = new ArrayList<>();
 
     public BookDirectory() {

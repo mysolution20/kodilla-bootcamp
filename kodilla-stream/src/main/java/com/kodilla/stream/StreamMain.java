@@ -2,6 +2,8 @@ package com.kodilla.stream;
 
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
 
 import java.util.List;
 import java.util.Map;
@@ -9,12 +11,34 @@ import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args){
-
         System.out.println("********************************");
+        System.out.println();
+        System.out.println("----- 7.3. Poznanie funkcji stream(), filter(), map() i collect()-----");
+        System.out.println();
+
+
+    Forum forum = new Forum();
+
+        Map<Integer,ForumUser> theForumUserList = forum.getUserList().stream()
+                .filter(ForumUser -> ForumUser.getGender() == 'M')
+                .filter(ForumUser -> ForumUser.getBirthDay().getYear() < 2000)
+                .filter(ForumUser -> ForumUser.getNumberOfPosts() > 0)
+                .collect(Collectors.toMap(ForumUser::getUserId, ForumUser -> ForumUser));
+
+        System.out.println("# elements: " + theForumUserList.size());
+
+        theForumUserList.entrySet().stream()
+                .map( entry -> entry.getKey()+":"+entry.getValue())
+                .forEach(System.out:: println);
+
+
+
+        System.out.println();
+        System.out.println("********************************");
+        System.out.println();
+
 
         BookDirectory theBookDirectory = new BookDirectory();
-
-        System.out.println("********************************");
 
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
@@ -22,8 +46,6 @@ public class StreamMain {
                 .collect(Collectors.joining(",\n","<<",">>"));      //  UWAGA  Collectors.joining()
 
         System.out.println(theResultStringOfBooks);
-
-
 
 
         System.out.println();
@@ -39,8 +61,6 @@ public class StreamMain {
         theResultMapOfBooks.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
-
-
 
 
         System.out.println();
@@ -65,7 +85,6 @@ public class StreamMain {
         System.out.println("# elements: " + theResultListOfBooks.size());
         theResultListOfBooks
                 .forEach(System.out::println);
-
 
 
         System.out.println();
