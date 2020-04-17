@@ -7,7 +7,7 @@ public final class ForumUser {
 
     private final int userId ;
     private final String userName;
-    private final  char gender;
+    private final char gender;
     private  int year;
     private  int month;
     private  int day;
