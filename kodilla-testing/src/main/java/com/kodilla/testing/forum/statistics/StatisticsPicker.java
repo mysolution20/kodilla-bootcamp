@@ -10,27 +10,16 @@ public class StatisticsPicker {
 
     public void calculateAdvStatistics(Statistics statistics) {
         numOfUsers = statistics.usersNames().size();
-        numOfPosts = statistics.postsCount();
-        numOfComments = statistics.commentsCount();
-
-        if (numOfUsers == 0) {
+        if (numOfUsers != 0) {
+            numOfPosts = statistics.postsCount();
+            numOfComments = statistics.commentsCount();
+        } else {
             numOfPosts = 0;
             numOfComments = 0;
-            avgNumOfPostPerUser = 0;
-            avgNumOfCommentsPerUser = 0;
-            avgNumOfCommentsPerPost = 0;
-        } else {
-            if (numOfPosts == 0) {
-                numOfComments = 0;
-                avgNumOfPostPerUser = 0;
-                avgNumOfCommentsPerPost = 0;
-                avgNumOfCommentsPerUser = 0;
-            } else {
-                avgNumOfPostPerUser = numOfPosts / numOfUsers;
-                avgNumOfCommentsPerUser = numOfComments / numOfUsers;
-                avgNumOfCommentsPerPost = numOfComments / numOfPosts;
-            }
         }
+        avgNumOfPostPerUser = (numOfUsers != 0) ? numOfPosts / numOfUsers : 0;
+        avgNumOfCommentsPerUser = (numOfUsers != 0) ? numOfComments / numOfUsers : 0;
+        avgNumOfCommentsPerPost = (numOfPosts != 0) ? numOfComments / numOfPosts : 0;
     }
 
     public void showStatistics() {
