@@ -7,7 +7,7 @@ public class Country {                 //    zwracającą liczbę typu BigDecima
     private final String countryName;
     private final double peopleQuantity;
 
-    public Country(String countryName, double peopleQuantity) {
+    public Country(final String countryName, final double peopleQuantity) {
         this.countryName = countryName;
         this.peopleQuantity = peopleQuantity;
     }
