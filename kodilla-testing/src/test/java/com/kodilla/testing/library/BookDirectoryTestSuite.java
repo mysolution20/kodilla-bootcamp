@@ -30,7 +30,7 @@ public class BookDirectoryTestSuite {
 
 
     @Test
-    public void testlistof0BooksInHandsOf() {
+    public void testListOf0BooksInHandsOf() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -45,7 +45,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testlistof1BooksInHandsOf() {
+    public void testListOf1BooksInHandsOf() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -64,7 +64,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testlistof5BooksInHandsOf() {
+    public void testListOf5BooksInHandsOf() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
