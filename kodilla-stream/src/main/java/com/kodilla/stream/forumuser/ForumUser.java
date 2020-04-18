@@ -8,17 +8,14 @@ public final class ForumUser {
     private final int userId ;
     private final String userName;
     private final char gender;
-    private  int year;
-    private  int month;
-    private  int day;
-    private final LocalDate birthDay ;
+    private final LocalDate birthDate;
     private final int numberOfPosts ;
 
-    public ForumUser(int userId, String userName, char gender, int year, int month, int day, int numberOfPosts) {
+    public ForumUser(int userId, String userName, char gender, int yearOfBirth, int monthOfBirth, int dayOfBirth, int numberOfPosts) {
         this.userId = userId;
         this.userName = userName;
         this.gender = gender;
-        this.birthDay = LocalDate.of( year,month, day);
+        this.birthDate = LocalDate.of(yearOfBirth, monthOfBirth, dayOfBirth);
         this.numberOfPosts = numberOfPosts;
     }
 
@@ -34,20 +31,8 @@ public final class ForumUser {
         return gender;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public LocalDate getBirthDay() {
-        return birthDay;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public int getNumberOfPosts() {
@@ -60,10 +45,7 @@ public final class ForumUser {
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", gender=" + gender +
-                ", year=" + year +
-                ", month=" + month +
-                ", day=" + day +
-                ", birthDay=" + birthDay +
+                ", birthDay=" + birthDate +
                 ", numberOfPosts=" + numberOfPosts +
                 '}';
     }
@@ -75,16 +57,13 @@ public final class ForumUser {
         ForumUser forumUser = (ForumUser) o;
         return getUserId() == forumUser.getUserId() &&
                 getGender() == forumUser.getGender() &&
-                getYear() == forumUser.getYear() &&
-                getMonth() == forumUser.getMonth() &&
-                getDay() == forumUser.getDay() &&
                 getNumberOfPosts() == forumUser.getNumberOfPosts() &&
                 Objects.equals(getUserName(), forumUser.getUserName()) &&
-                Objects.equals(getBirthDay(), forumUser.getBirthDay());
+                Objects.equals(getBirthDate(), forumUser.getBirthDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserId(), getUserName(), getGender(), getYear(), getMonth(), getDay(), getBirthDay(), getNumberOfPosts());
+        return Objects.hash(getUserId(), getUserName(), getGender(), getBirthDate(), getNumberOfPosts());
     }
 }
