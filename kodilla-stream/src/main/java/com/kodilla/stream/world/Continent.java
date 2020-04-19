@@ -1,12 +1,11 @@
 package com.kodilla.stream.world;
 
-import java.math.BigDecimal;
 import java.util.*;
-
 public class Continent {
-
     private final String continent;
-    Set <Country> countrySet = new HashSet<> ();
+    private final Set<Country> countrySet;
+
+    /*    Set <Country> countrySet = new HashSet<> ();
 
     final public Set<Country> getCountrySet(){
         countrySet.add(new Country("India",new BigDecimal("1200000000")));
@@ -22,16 +21,21 @@ public class Continent {
         countrySet.add(new Country("Australia",new BigDecimal("45000000")));
         countrySet.add(new Country("New Zealand",new BigDecimal("10000000")));
         return new HashSet<Country> (countrySet);
-    }
+    }*/
 
-    public Continent(String continent) {
+    public Continent(String continent, Set<Country> countrySet) {
         this.continent = continent;
+        this.countrySet = countrySet;
     }
-
     public String getContinent() {
         return continent;
     }
 
+    public HashSet<Country> getCountrySet(Country country) {
+        final Set <Country> countrySet = new HashSet<> ();
+        countrySet.add(country);
+        return new HashSet<Country> (countrySet);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -39,12 +43,12 @@ public class Continent {
         if (o == null || getClass() != o.getClass()) return false;
         Continent continent1 = (Continent) o;
         return Objects.equals(continent, continent1.continent) &&
-                Objects.equals(getCountrySet(), continent1.getCountrySet());
+                Objects.equals(countrySet, continent1.countrySet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(continent, getCountrySet());
+        return Objects.hash(continent, countrySet);
     }
 
     @Override
@@ -68,7 +72,37 @@ public class Continent {
 
 
 
+
+
+
+
+
 //    ******** temporary trash to erase ****************
+
+
+//    public  Set<Continent> getContinentSet(Continent continent) {
+//        final Set<Continent> continentSet = new HashSet<>();
+//        continentSet.add(continent);
+//        return new HashSet<Continent>(continentSet);
+//
+
+/*    Set <Country> countrySet = new HashSet<> ();
+
+    final public Set<Country> getCountrySet(){
+        countrySet.add(new Country("India",new BigDecimal("1200000000")));
+        countrySet.add(new Country("Japan",new BigDecimal("90000000")));
+        countrySet.add(new Country("England",new BigDecimal("60000000")));
+        countrySet.add(new Country("Sweden",new BigDecimal("15000000")));
+        countrySet.add(new Country("Egypt",new BigDecimal("91000000")));
+        countrySet.add(new Country("Morocco",new BigDecimal("30000000")));
+        countrySet.add(new Country("Brazil",new BigDecimal("160000000")));
+        countrySet.add(new Country("Argentina",new BigDecimal("40000000")));
+        countrySet.add(new Country("Canada",new BigDecimal("40000000")));
+        countrySet.add(new Country("Mexico",new BigDecimal("80000000")));
+        countrySet.add(new Country("Australia",new BigDecimal("45000000")));
+        countrySet.add(new Country("New Zealand",new BigDecimal("10000000")));
+        return new HashSet<Country> (countrySet);
+    }*/
 
 /*    public Map<String, String> getContinentMap(String countryOfContinent, String continent) {
         final Map<String, String> continentMap = new HashMap<>();
