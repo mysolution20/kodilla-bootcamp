@@ -26,25 +26,22 @@ public class ArrayOperationsTestSuite {
           int [] setOfNumbers = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
           ArrayExecution arrayExecution = new ArrayExecution();
          //When
-          double result = arrayExecution.getAverage(setOfNumbers);
+          double result = arrayExecution.getAverage2(setOfNumbers);
           System.out.println("Test 1: "+result);
          //Then
           assertEquals(10.5, result,0);
      }
 
      @Test
-     public void testGetAverage2(){
+     public void testGetAverageWithIntStream(){
           //Given
           int [] setOfNumbers = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-//          ArrayExecution arrayExecution = new ArrayExecution();
+          ArrayExecution arrayExecution = new ArrayExecution();
           //When
-          System.out.println("# elements: " + setOfNumbers.length); //theResultMapOfBooks.entrySet().stream()
-          OptionalDouble result2 = IntStream.range(0, setOfNumbers.length+2)
-                  .average();
-//        .forEach(System.out::println)
-          System.out.println("Test 2: "+result2);
+          double result = arrayExecution.getAverage(setOfNumbers);
+          System.out.println("Test 2: "+result);
           //Then
-          assertEquals(10.5, 10.5,0);
+          assertEquals(10.5, result,0);
      }
 
 }

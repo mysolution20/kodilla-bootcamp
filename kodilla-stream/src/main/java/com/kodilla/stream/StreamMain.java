@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.array.ArrayExecution;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
@@ -8,12 +9,55 @@ import com.kodilla.stream.forumuser.ForumUser;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StreamMain {
     public static void main(String[] args) {
 
+
+        System.out.println();
         System.out.println("********************************");
         System.out.println();
+        System.out.println("7.5. Wzbogacenie wiedzy o IntStream");
+        System.out.println();
+        System.out.println();
+
+        int [] setOfNumbers = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+
+        ArrayExecution arrayExecution = new ArrayExecution();
+        double result = arrayExecution.getAverage2(setOfNumbers);
+        System.out.println("1.Average: "+  result);
+        System.out.println();
+        for (Integer number: setOfNumbers) {
+            System.out.println(number);
+        }
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+        double result2 = arrayExecution.getAverage(setOfNumbers);
+        System.out.println("2.Average: "+ result2);
+        System.out.println();
+        IntStream stream = IntStream.range(1, setOfNumbers.length+1);
+        stream.forEach(System.out::println);
+
+
+
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("********************************");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+
         System.out.println("----- 7.3. Poznanie funkcji stream(), filter(), map() i collect()-----");
         System.out.println();
 
