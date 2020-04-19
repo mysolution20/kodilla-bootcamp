@@ -1,36 +1,31 @@
 package com.kodilla.stream.world;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class World{
 
-//    public static Map<Country,Continent> getContinentList() {
-//        final Map<Country,Continent> continentList = new HashMap<>();
-//        continentList.put(new Country("India",1200000000),new Continent("Asia"));
-//        continentList.put(new Country("Japan",90000000),new Continent("Asia"));
-//        continentList.put(new Country("England",60000000),new Continent("Europa"));
-//        continentList.put(new Country("Sweden",15000000),new Continent("Europa"));
-//        continentList.put(new Country("Egypt",91000000),new Continent("Africa"));
-//        continentList.put(new Country("Morocco",30000000),new Continent("Africa"));
-//        continentList.put(new Country("Brazil",160000000),new Continent("South America"));
-//        continentList.put(new Country("Argentina",40000000),new Continent("South America"));
-//        continentList.put(new Country("Canada",40000000),new Continent("North America"));
-//        continentList.put(new Country("Mexico",80000000),new Continent("North America"));
-//        continentList.put(new Country("Australia",45000000),new Continent("Australia"));
-//        continentList.put(new Country("New Zealand",10000000),new Continent("Australia"));
-//        return new HashMap<Country,Continent> ( continentList);
-//    }
+//    private final String continent;
+//    private final String country;
 
-    public void getPeopleQuantity() {
-
+    public  List<Continent> getContinentList(Continent continent) {
+        final List<Continent> continentList = new ArrayList<>();
+        continentList.add(new Continent("Asia"));
+        continentList.add(new Continent("Europa"));
+        continentList.add(new Continent("Africa"));
+        continentList.add(new Continent("South America"));
+        continentList.add(new Continent("North America"));
+        continentList.add(new Continent("Australia"));
+        return new ArrayList<>(continentList);
     }
 
-//    Aby zrealizować to zadanie, będzie nam potrzebne zbudowanie struktury danych (kolekcji)
-//    reprezentującej świat. Jej elementem składowym będzie lista kontynentów.
-//    Każdy kontynent będzie posiadał listę krajów, a każdy kraj metodę zwracającą ilość zamieszkujących go ludzi
+//    public Set<Country>  getPeopleQuantity() {
+//     return countrySet.stream()
+//     .map( country -> country.getPeopleQuantity())
+//     .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+//    }
 
 
-//    Klasa World powinna zawierać kolekcję kontynentów
 //      flatMap()  reduce()
 
 
