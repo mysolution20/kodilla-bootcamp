@@ -5,36 +5,17 @@ public class Continent {
     private final String continent;
     private final Set<Country> countrySet;
 
-    /*    Set <Country> countrySet = new HashSet<> ();
-
-    final public Set<Country> getCountrySet(){
-        countrySet.add(new Country("India",new BigDecimal("1200000000")));
-        countrySet.add(new Country("Japan",new BigDecimal("90000000")));
-        countrySet.add(new Country("England",new BigDecimal("60000000")));
-        countrySet.add(new Country("Sweden",new BigDecimal("15000000")));
-        countrySet.add(new Country("Egypt",new BigDecimal("91000000")));
-        countrySet.add(new Country("Morocco",new BigDecimal("30000000")));
-        countrySet.add(new Country("Brazil",new BigDecimal("160000000")));
-        countrySet.add(new Country("Argentina",new BigDecimal("40000000")));
-        countrySet.add(new Country("Canada",new BigDecimal("40000000")));
-        countrySet.add(new Country("Mexico",new BigDecimal("80000000")));
-        countrySet.add(new Country("Australia",new BigDecimal("45000000")));
-        countrySet.add(new Country("New Zealand",new BigDecimal("10000000")));
-        return new HashSet<Country> (countrySet);
-    }*/
-
     public Continent(String continent, Set<Country> countrySet) {
         this.continent = continent;
         this.countrySet = countrySet;
     }
-    public String getContinent() {
+
+    private String getContinent() {
         return continent;
     }
 
-    public HashSet<Country> getCountrySet(Country country) {
-        final Set <Country> countrySet = new HashSet<> ();
-        countrySet.add(country);
-        return new HashSet<Country> (countrySet);
+    private  Set<Country> getCountrySet() {
+        return new HashSet<>(countrySet);
     }
 
     @Override
