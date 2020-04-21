@@ -25,19 +25,15 @@ public class ArrayOperationsTestSuite {
         testCounter++;
         System.out.println("Preparing to execute GetListUsing test #" + testCounter);
     }
-
     @Test
     public void testGetAverage() {
         //Given
-
-        int[] setOfNumbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
-        ArrayOperations.getAverage(setOfNumbers);
-        IntStream intStream = IntStream
-                .range(0, setOfNumbers.length);
+        int[] Numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
+        ArrayOperations.getAverage(Numbers);
         //When
-        OptionalDouble result = intStream
-                .average();
+         double result = ArrayOperations.getAverage(Numbers);
+
         //Then
-        assertEquals(9.5, result.getAsDouble(), 0);
+        assertEquals(9.5, result, 0);
     }
 }
