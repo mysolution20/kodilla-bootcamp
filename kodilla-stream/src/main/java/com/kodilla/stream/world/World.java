@@ -1,47 +1,77 @@
 package com.kodilla.stream.world;
 import java.math.BigDecimal;
 import java.util.*;
+
 public class World{
-//    private final List<Continent> continentSet;
 
-//    public World() { }
+    private final List<Continent> continents;
 
-//    public World(List<Continent> continentSet) {
-//        this.continentSet = new ArrayList<>();
-//    }
+    public  World() {
 
-//    public void getContinentSet(Continent continent) {
-//        List<Continent> continentTemp  = new ArrayList<>();
-//
-//        continentTemp.add(new Continent("Asia",""));
-//
-//        continentTemp.add(new Continent("Europa"));
-//        continentTemp.add(new Continent("Africa"));
-//        continentTemp.add(new Continent("South America"));
-//        continentTemp.add(new Continent("North America"));
-//        continentTemp.add(new Continent("Australia"));
-//        this.continentSet = continentTemp;
-//    }
+        List<Continent> tempContinents = new ArrayList<>();
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        World world = (World) o;
-//        return Objects.equals(continentSet, world.continentSet);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(continentSet);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "World{" +
-//                "ContinentSet=" + continentSet +
-//                '}';
-//    }
+            Set<Country> asiaContinents = new HashSet<>();
+                asiaContinents.add(new Country("India",new BigDecimal("1200000000")));
+                asiaContinents.add(new Country("Japan",new BigDecimal("90000000")));
+            tempContinents.add(new Continent("Asia",asiaContinents));
+
+            Set<Country> europeContinents = new HashSet<>();
+                europeContinents.add(new Country("England",new BigDecimal("60000000")));
+                europeContinents.add(new Country("Sweden",new BigDecimal("15000000")));
+            tempContinents.add(new Continent("Europe",europeContinents));
+
+            Set<Country> africaContinents = new HashSet<>();
+                africaContinents.add(new Country("Egypt",new BigDecimal("91000000")));
+                africaContinents.add(new Country("Morocco",new BigDecimal("30000000")));
+            tempContinents.add(new Continent("Africa",africaContinents));
+
+            Set<Country> southAmericaContinents = new HashSet<>();
+                southAmericaContinents.add(new Country("Argentina",new BigDecimal("40000000")));
+                southAmericaContinents.add(new Country("Brazil",new BigDecimal("160000000")));
+            tempContinents.add(new Continent("South America",southAmericaContinents));
+
+            Set<Country> northAmericaContinents = new HashSet<>();
+                northAmericaContinents.add(new Country("Canada",new BigDecimal("40000000")));
+                northAmericaContinents.add(new Country("Mexico",new BigDecimal("80000000")));
+            tempContinents.add(new Continent("North America",northAmericaContinents));
+
+            Set<Country> australiaContinents = new HashSet<>();
+                australiaContinents.add(new Country("Australia",new BigDecimal("45000000")));
+                australiaContinents.add(new Country("New Zeland",new BigDecimal("15000000")));
+            tempContinents.add(new Continent("Australia",australiaContinents));
+
+        this.continents = tempContinents;
+    }
+
+    public List<Continent> getContinents() {
+        return new ArrayList<>(continents);
+    }
+
+    public double getPeopleQuantity(){
+//        continents.stream()
+        return 1;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        World world = (World) o;
+        return Objects.equals(continents, world.continents);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(continents);
+    }
+
+    @Override
+    public String toString() {
+        return "World{" +
+                "Continent=" + continents +
+                '}';
+    }
 
 //      flatMap()  reduce()
 

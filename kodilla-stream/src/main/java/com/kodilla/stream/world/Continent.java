@@ -1,11 +1,12 @@
 package com.kodilla.stream.world;
 
 import java.util.*;
+
 public class Continent {
     private final String continent;
     private final Set<Country> countrySet;
 
-    public Continent(String continent, Set<Country> countrySet) {
+    public Continent(final String continent,final Set<Country> countrySet) {
         this.continent = continent;
         this.countrySet = countrySet;
     }
@@ -14,7 +15,7 @@ public class Continent {
         return continent;
     }
 
-    private  Set<Country> getCountrySet() {
+    private Set<Country> getCountrySet() {
         return new HashSet<>(countrySet);
     }
 
@@ -40,20 +41,6 @@ public class Continent {
                 '}';
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
