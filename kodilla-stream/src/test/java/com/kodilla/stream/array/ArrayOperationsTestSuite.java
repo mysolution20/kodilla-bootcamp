@@ -25,14 +25,13 @@ public class ArrayOperationsTestSuite {
         testCounter++;
         System.out.println("Preparing to execute GetListUsing test #" + testCounter);
     }
+
     @Test
     public void testGetAverage() {
         //Given
-        int[] Numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
-        ArrayOperations.getAverage(Numbers);
+        int[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19};
         //When
-         double result = ArrayOperations.getAverage(Numbers);
-
+        double result = ArrayOperations.getAverage(numbers);
         //Then
         assertEquals(9.5, result, 0);
     }
