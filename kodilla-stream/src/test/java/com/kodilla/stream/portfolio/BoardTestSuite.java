@@ -1,7 +1,9 @@
 package com.kodilla.stream.portfolio;
 
+import com.kodilla.stream.world.Country;
 import org.junit.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,7 @@ public class BoardTestSuite {
                 "Prepare some HQL queries for analysis",
                 user1,
                 user2,
-                LocalDate.now().minusDays(20),
+                LocalDate.now().minusDays(20),//20
                 LocalDate.now().minusDays(5));
         Task task3 = new Task("Temperatures entity",
                 "Prepare entity for temperatures",
@@ -61,13 +63,13 @@ public class BoardTestSuite {
                 "Refactor company logger to meet our needs",
                 user3,
                 user2,
-                LocalDate.now().minusDays(10),
+                LocalDate.now().minusDays(10),//10
                 LocalDate.now().plusDays(25));
         Task task5 = new Task("Optimize searching",
                 "Archive data searching has to be optimized",
                 user4,
                 user2,
-                LocalDate.now(),
+                LocalDate.now().minusDays(0),//0
                 LocalDate.now().plusDays(5));
         Task task6 = new Task("Use Streams",
                 "use Streams rather than for-loops in predictions",
@@ -160,12 +162,14 @@ public class BoardTestSuite {
         //Given
         Board project = prepareTestData();
         //When
-        Double aDouble = project.getTaskLists().stream()
+
+        Long aSuma = project.getTaskLists().stream()
                 .filter(tl -> tl.getName().endsWith("progress"))
                 .flatMap(tl -> tl.getTasks().stream())
-                .collect(Collectors.averagingLong(Task::getCurrentTaskLength));
+                .map(Task::getCurrentTaskLength)
+                .reduce((long) 0.0, (sum, current) -> sum = sum+=current);
         //Then
-        assertEquals(10, aDouble, 0.0001);
+        assertEquals(56, aSuma, 0.0001);
     }
 
     @Test
