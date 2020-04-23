@@ -1,29 +1,37 @@
 package com.kodilla.stream.portfolio;
+
 import org.junit.*;
-import java.math.BigDecimal;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.AdditionalMatchers.not;
 
 public class BoardTestSuite {
     private static int testCounter = 0;
+
     @BeforeClass
     public static void beforeAllTests() {
         System.out.println("Beginning of GetListUsing tests.");
     }
+
     @AfterClass
     public static void afterAllTests() {
         System.out.println("All GetListUsing tests are finished.");
     }
+
     @Before
     public void beforeEveryTest() {
         testCounter++;
         System.out.println("Preparing to execute GetListUsing test #" + testCounter);
     }
-    public Board  prepareTestData(){
+
+    public Board prepareTestData() {
         //users
         User user1 = new User("developer1", "John Smith");
         User user2 = new User("projectmanager1", "Nina White");
@@ -92,8 +100,9 @@ public class BoardTestSuite {
         //When
 
         //Then
-        Assert.assertEquals(3, project.getTaskLists().size());
+        assertEquals(3, project.getTaskLists().size());
     }
+
     @Test
     public void testAddTaskListFindUsersTasks() {
         //Given
@@ -105,9 +114,9 @@ public class BoardTestSuite {
                 .filter(t -> t.getAssignedUser().equals(user))
                 .collect(toList());
         //Then
-        Assert.assertEquals(2, tasks.size());
-        Assert.assertEquals(user, tasks.get(0).getAssignedUser());
-        Assert.assertEquals(user, tasks.get(1).getAssignedUser());
+        assertEquals(2, tasks.size());
+        assertEquals(user, tasks.get(0).getAssignedUser());
+        assertEquals(user, tasks.get(1).getAssignedUser());
     }
 
     @Test
@@ -125,12 +134,12 @@ public class BoardTestSuite {
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
                 .collect(toList());
         //Then
-         Assert.assertEquals(0, tasks.size());
+        assertEquals(0, tasks.size());
     }
 
 
     @Test
-    public void testAddTaskListFindOutdatedTasks2() {
+    public void testAddTaskListFindOutHQLsForAnalysis() {
         //Given
         Board project = prepareTestData();
 
@@ -142,27 +151,33 @@ public class BoardTestSuite {
                 .filter(undoneTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .collect(toList());
-        //Then              tasks.get(0).getTitle()
-        Assert.assertEquals("HQLs for analysis", project.getTaskLists().get(1).getTasks().get(2).getTitle());
-//      Assert.assertEquals("HQLs for analysis", tasks.get(2).getTitle());
+        //Then
+        assertEquals("HQLs for analysis", project.getTaskLists().get(1).getTasks().get(2).getTitle());
     }
 
     @Test
-    public void testAddTaskListFindAllTasks() {
+    public void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
         //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-
-            List<Task> tasks = project.getTaskLists().stream()
-                    .filter(inProgressTasks::contains)
-                    .flatMap(t -> t.getTasks().stream())
-                    .filter(t -> t.getCreated().isBefore(LocalDate.now()))
-                    .collect(Collectors.toList());
+        Double aDouble = project.getTaskLists().stream()
+                .filter(tl -> tl.getName().endsWith("progress"))
+                .flatMap(tl -> tl.getTasks().stream())
+                .collect(Collectors.averagingLong(Task::getCurrentTaskLength));
         //Then
-         System.out.println(LocalDate.now());
-        Assert.assertEquals(6, 6);
-//        Assert.assertEquals(3, tasks.size());
+        assertEquals(10, aDouble, 0.0001);
+    }
+
+    @Test
+    public void testAddTaskListSizeWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<Task> aDouble = project.getTaskLists().stream()
+                .filter(tl -> tl.getName().endsWith("progress"))
+                .flatMap(tl -> tl.getTasks().stream())
+                .collect(toList());
+        //Then
+        assertEquals(3, aDouble.size());
     }
 }

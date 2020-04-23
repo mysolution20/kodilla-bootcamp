@@ -2,6 +2,8 @@ package com.kodilla.stream.portfolio;
 
 import java.time.LocalDate;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Task {
     private final String title;
     private final String description;
@@ -18,6 +20,10 @@ public class Task {
         this.creator = creator;
         this.created = created;
         this.deadline = deadline;
+    }
+
+    public long getCurrentTaskLength() {
+        return DAYS.between(getCreated(), LocalDate.now());
     }
 
     public String getTitle() {
