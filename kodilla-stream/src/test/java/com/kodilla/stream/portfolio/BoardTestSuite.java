@@ -162,14 +162,12 @@ public class BoardTestSuite {
         //Given
         Board project = prepareTestData();
         //When
-
-        Long aSuma = project.getTaskLists().stream()
+        Double aDouble = project.getTaskLists().stream()
                 .filter(tl -> tl.getName().endsWith("progress"))
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCurrentTaskLength)
-                .reduce((long) 0.0, (sum, current) -> sum = sum+=current);
-        //Then
-        assertEquals(56, aSuma, 0.0001);
+                .collect(Collectors.averagingLong(Task::getCurrentTaskLength));
+//        Then
+        assertEquals(10, aDouble, 0.0001);
     }
 
     @Test
@@ -183,5 +181,19 @@ public class BoardTestSuite {
                 .collect(toList());
         //Then
         assertEquals(3, aDouble.size());
+    }
+
+    @Test
+    public void testAddTaskListSumWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        final Long progress = project.getTaskLists().stream()
+                .filter(tl -> tl.getName().endsWith("progress"))
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(Task::getCurrentTaskLength)
+                .reduce((long) 0.0, (sum, current) -> sum = sum += current);
+        //Then
+        assertEquals(30.0, progress, 0.0001);
     }
 }

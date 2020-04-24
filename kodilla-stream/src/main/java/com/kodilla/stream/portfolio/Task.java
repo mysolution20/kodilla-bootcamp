@@ -1,8 +1,6 @@
 package com.kodilla.stream.portfolio;
 
-import java.awt.geom.Arc2D;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -25,9 +23,7 @@ public class Task {
     }
 
     public long getCurrentTaskLength() {
-       final long intervalDays = ChronoUnit.DAYS.between(getCreated(),LocalDate.now());
-        return intervalDays;
-//        return DAYS.between(getCreated(), LocalDate.now());
+        return DAYS.between(getCreated(), LocalDate.now());
     }
 
     public String getTitle() {
