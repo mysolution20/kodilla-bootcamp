@@ -26,7 +26,7 @@ public class FirstChallenge {
             System.out.println("You should not divide a number by zero" + e);
 
         } finally {
-            System.out.println("Exception occurred");
+            System.out.println("Here there is information, that occurs always.");
 
         }
     }
