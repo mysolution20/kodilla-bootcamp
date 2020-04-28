@@ -1,29 +1,15 @@
 package com.kodilla.exception.test;
 
 public class ExceptionHandling extends Exception {
-    public String exceptionHandlingSimpleText() {
-        return "*****************************************************\n" +
-                "Something went wrong with probablyIWillThrowException\n" +
-                "method, therefore now it is going to handle them!\n" +
-                "*****************************************************";
-    }
-}
-
-class Example {
-    public static void main(String[] args) throws ExceptionHandling {
-
-        SecondChallenge secondChallenge = new SecondChallenge();
-        ExceptionHandling exceptionHandling = new ExceptionHandling();
-        String ex = exceptionHandling.exceptionHandlingSimpleText();
-
+    public void exceptionHandlingMethod(double x, double y) {
         try {
-            System.out.println(secondChallenge.probablyIWillThrowException(2, 1.5));
-        } catch (ExceptionHandling e) {
-            throw new ExceptionHandling();
+            if (x >= 2 || x < 1 || y == 1.5)
+                throw new Exception("Note, variables x and y with values of \n " +
+                        "x >= 2 or x < 1 or y == 1.5 are forbidden.");
+//                System.out.println("Note, variables x and y with values of \n " +
+//                        "x >= 2 or x < 1 or y == 1.5 are forbidden.");
         } catch (Exception e) {
-            System.out.println(ex);
-        } finally {
-            System.out.println("******** Last certain info! **********");
+            System.out.println(e.getMessage());
         }
     }
 }
