@@ -1,13 +1,14 @@
 package com.kodilla.exception.test;
 
-public class ExceptionHandling extends Exception {
-    public void exceptionHandlingMethod(double x, double y) {
+public class ExceptionHandling {
+    public static void main(String[] args) throws Exception {
+        SecondChallenge secondChallenge = new SecondChallenge();
+        double x = 1.5;
+        double y = 2;
+        double z = 0.0;         //   x < 2 || x > 1 || y != 1.5
         try {
-            if (x >= 2 || x < 1 || y == 1.5)
-                throw new Exception("Note, variables x and y with values of \n " +
-                        "x >= 2 or x < 1 or y == 1.5 are forbidden.");
-//                System.out.println("Note, variables x and y with values of \n " +
-//                        "x >= 2 or x < 1 or y == 1.5 are forbidden.");
+            String result = secondChallenge.probablyIWillThrowException(x + z, y - z);
+            System.out.println(result);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

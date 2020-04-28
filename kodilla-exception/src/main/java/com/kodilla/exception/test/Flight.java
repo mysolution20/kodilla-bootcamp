@@ -1,13 +1,11 @@
 package com.kodilla.exception.test;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Flight {
     String departureAirport;
     String arrivalAirport;
-    public Flight() {   }
+
     public Flight(String departureAirport, String arrivalAirport) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
