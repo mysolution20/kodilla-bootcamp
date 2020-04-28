@@ -4,104 +4,125 @@ import java.util.Scanner;
 
 public class RpsRunner {
     public static void main(String[] args) {
-        int wygrane = 0, remisy = 0, gry = 0, przeciwnik, zwyciezca = 0, przegrane = 0;
-        final int GRACZ = 1, PRZECIWNIK = 2, REMIS = 3, KAMIEN = 1, PAPIER = 2, NOZYCE = 3;
-        Scanner opcjaWyboru = new Scanner(System.in);
-        Scanner doIluWygranych = new Scanner(System.in);
-        Scanner naImiePrzeciwnik = new Scanner(System.in);
+
+        int won = 0, draws = 0, games = 0;
+        int opponent = 0, winner = 0, lost = 0;
+
+        final int playerSwitch = 1, opponentSwitch = 2, drawSwitch = 3;
+        final int stoneResult = 1, paperResult = 2, scissorsResult = 3;
+
+        Scanner choiceOption = new Scanner(System.in);
+        Scanner howManyWinsPlay = new Scanner(System.in);
+        Scanner nameOfOpponent = new Scanner(System.in);
+
         System.out.print("Jak masz na imie?");
-        String naImieP = naImiePrzeciwnik.next();
-        System.out.print("Na imie masz: " + naImieP + ", super!");
+        String nameOfOpp = nameOfOpponent.next();
+//        String nameOfOpp = "Andrzej";
+
+        System.out.print("Na imie masz: " + nameOfOpp + ", super!");
         System.out.print(" ");
-        String graszPonownie = "x";
+
+        String playAgain = "x";
         do {
             System.out.print("Podaj liczbe, do ilu zwycienstw gramy ?");
-            int gramyDo = doIluWygranych.nextInt();
+            int playUntil = howManyWinsPlay.nextInt();
+//            int playUntil = 2;
 
-            System.out.print("Gramy do: " + gramyDo + " wygranych.  ");
+            System.out.print("Gramy do: " + playUntil + " wygranych.  ");
             do {
-                przeciwnik = (int) (Math.random() * 3) + 1;
+                opponent = (int) (Math.random() * 3) + 1;
                 System.out.print("Losuj jeden z trzech, gdzie: " + "1 = kamień" + ",2 = papier" + ",3 = nożyce");
 
-                int player = opcjaWyboru.nextInt();
+                int player = choiceOption.nextInt();
 
-                System.out.print(naImieP + " wybrałeś:");
+                System.out.print(nameOfOpp + " wybrałeś:");
+
                 switch (player) {
-                    case KAMIEN:
+                    case stoneResult:
                         System.out.println(" kamień");
                         break;
-                    case PAPIER:
+                    case paperResult:
                         System.out.println(" papier");
                         break;
-                    case NOZYCE:
+                    case scissorsResult:
                         System.out.println(" nożyce");
                         break;
                 }
                 System.out.print("Ja wybrałem:");
-                switch (przeciwnik) {
-                    case KAMIEN:
+
+                switch (opponent) {
+                    case stoneResult:
                         System.out.println(" kamień");
-                        if (player == NOZYCE) {
-                            zwyciezca = PRZECIWNIK;
-                        } else if (player == PAPIER) {
-                            zwyciezca = GRACZ;
+                        if (player == scissorsResult) {
+                            winner = opponentSwitch;
+                        } else if (player == paperResult) {
+                            winner = playerSwitch;
                         } else {
-                            zwyciezca = REMIS;
+                            winner = drawSwitch;
                         }
                         break;
-                    case PAPIER:
+
+                    case paperResult:
                         System.out.println(" papier");
-                        if (player == KAMIEN) {
-                            zwyciezca = PRZECIWNIK;
-                        } else if (player == NOZYCE) {
-                            zwyciezca = GRACZ;
+                        if (player == stoneResult) {
+                            winner = opponentSwitch;
+                        } else if (player == scissorsResult) {
+                            winner = playerSwitch;
                         } else {
-                            zwyciezca = REMIS;
+                            winner = drawSwitch;
                         }
                         break;
-                    case NOZYCE:
+
+                    case scissorsResult:
                         System.out.println(" nożyce");
-                        if (player == PAPIER) {
-                            zwyciezca = PRZECIWNIK;
-                        } else if (player == KAMIEN) {
-                            zwyciezca = GRACZ;
+                        if (player == paperResult) {
+                            winner = opponentSwitch;
+                        } else if (player == stoneResult) {
+                            winner = playerSwitch;
                         } else {
-                            zwyciezca = REMIS;
+                            winner = drawSwitch;
                         }
                 }
-                gry++;
-                if (zwyciezca == GRACZ) {
-                    wygrane++;
-                    System.out.println("W rundzie " + gry + " wygrałeś: " + naImieP + "!");
+                games++;
+
+                if (winner == playerSwitch) {
+                    won++;
+                    System.out.println("W rundzie " + games + " wygrałeś: " + nameOfOpp + "!");
                     System.out.println();
-                } else if (zwyciezca == PRZECIWNIK) {
-                    przegrane++;
-                    System.out.println("W rundzie " + gry + ": ja wygrałem !");
+
+                } else if (winner == opponentSwitch) {
+                    lost++;
+                    System.out.println("W rundzie " + games + ": ja wygrałem !");
                     System.out.println();
+
                 } else {
-                    remisy++;
-                    System.out.println("W rundzie " + gry + ": mamy remis!");
+                    draws++;
+                    System.out.println("W rundzie " + games + ": mamy remis!");
                     System.out.println();
                 }
             }
-            while (wygrane < gramyDo && przegrane < gramyDo);
+            while (won < playUntil && lost < playUntil);
 
-            System.out.println("Wszytkich losowań mieliśmy: " + gry + " razy.");
-            if (wygrane > przegrane) {
-                System.out.println(naImieP + " wygrałeś!");
+            System.out.println("Wszytkich losowań mieliśmy: " + games + " razy.");
+            if (won > lost) {
+                System.out.println(nameOfOpp + " wygrałeś!");
             } else
+
                 System.out.println("Ja wygrałem!");
             System.out.println();
-            System.out.println("Wygrałeś " + wygrane + " razy.");
-            System.out.println("Przegrałeś: " + przegrane + " razy.");
-            System.out.println("Zremisowaliśmy " + remisy + " razy.");
-            gry = 0;
-            wygrane = 0;
-            przegrane = 0;
-            remisy = 0;
+            System.out.println("Wygrałeś " + won + " razy.");
+            System.out.println("Przegrałeś: " + lost + " razy.");
+            System.out.println("Zremisowaliśmy " + draws + " razy.");
+
+            games = 0;
+            won = 0;
+            lost = 0;
+            draws = 0;
+
             System.out.print("Czy na pewno zakończyć grę? (gdy, tak = x,  n = nie)");
-            graszPonownie = opcjaWyboru.nextLine();
-            graszPonownie = opcjaWyboru.nextLine();
-        } while (graszPonownie.equalsIgnoreCase("N"));
+            playAgain = choiceOption.nextLine();
+            playAgain = choiceOption.nextLine();
+
+        } while (playAgain.equalsIgnoreCase("N"));
     }
 }
