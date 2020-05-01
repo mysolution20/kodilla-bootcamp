@@ -8,33 +8,34 @@ public class RpsRunner {
         final int playerSwitch = 1, opponentSwitch = 2, drawSwitch = 3, stoneResult = 1, paperResult = 2, scissorsResult = 3;
         Scanner loneHardworkingScanner = new Scanner(System.in);
         System.out.print("Jak masz na imie?");
-        String nameOfOpp = loneHardworkingScanner.next();             //        String nameOfOpp = "Andrzej";
+        String nameOfOpp = loneHardworkingScanner.next();
         System.out.print("Na imie masz: " + nameOfOpp + ", super!\n");
         String playAgain = "x";
         do {
             System.out.print("Podaj liczbe, do ilu zwyciestw gramy ?\n");
-            int playUntil = loneHardworkingScanner.nextInt();        //            int playUntil = 2;
+            int playUntil = loneHardworkingScanner.nextInt();        //
             System.out.print("Gramy do: " + playUntil + " wygranych.\n");
             do {
                 opponent = (int) (Math.random() * 3) + 1;
-                System.out.print("Losuj jeden z trzech, gdzie: " + "1 = kamień" + ",2 = papier" + ",3 = nożyce.\n");
-                int player = loneHardworkingScanner.nextInt();
-                if (!(player == 1 || player == 2 || player == 3)) {
-                    System.out.print(nameOfOpp + " wybrałeś: " + player + " to wartość z poza zakresu, kończymy losowanie.\n");
-                    System.exit(0);
-                } else {
-                    System.out.print(nameOfOpp + " wybrałeś: " + player);
-                    switch (player) {
-                        case stoneResult:
-                            System.out.println(" kamień");
-                            break;
-                        case paperResult:
-                            System.out.println(" papier");
-                            break;
-                        case scissorsResult:
-                            System.out.println(" nożyce");
-                            break;
+                int player;
+                do {
+                    System.out.print("Losuj jeden z trzech, gdzie: " + "1 = kamień" + ",2 = papier" + ",3 = nożyce.\n");
+                    player = loneHardworkingScanner.nextInt();
+                    if (!(player == 1 || player == 2 || player == 3)) {
+                        System.out.print(nameOfOpp + " wybrałeś: " + player + " to wartość z poza zakresu. Próbuj ponownie.\n");
                     }
+                } while (!(player > 0 && player < 4));
+                System.out.print(nameOfOpp + " wybrałeś: " + player);
+                switch (player) {
+                    case stoneResult:
+                        System.out.println(" kamień");
+                        break;
+                    case paperResult:
+                        System.out.println(" papier");
+                        break;
+                    case scissorsResult:
+                        System.out.println(" nożyce");
+                        break;
                 }
                 System.out.print("Ja wybrałem:");
                 switch (opponent) {
