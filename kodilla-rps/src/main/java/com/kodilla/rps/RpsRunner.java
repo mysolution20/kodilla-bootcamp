@@ -13,7 +13,7 @@ public class RpsRunner {
         String playAgain = "x";
         do {
             System.out.print("Podaj liczbe, do ilu zwyciestw gramy ?\n");
-            int playUntil = loneHardworkingScanner.nextInt();        //
+            int playUntil = loneHardworkingScanner.nextInt();
             System.out.print("Gramy do: " + playUntil + " wygranych.\n");
             do {
                 opponent = (int) (Math.random() * 3) + 1;
