@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challanges;
+package com.kodilla.good.patterns.orders;
 
 public class ProductOrderService {
     private final InformationService informationService;
@@ -14,12 +14,14 @@ public class ProductOrderService {
     }
 
     public OrderDto assembly(final OrderRequest orderRequest) {
-        boolean isRented = orderService.rent(orderRequest.getUser(), orderRequest.getItem(), orderRequest.getOrderDate(),
-                orderRequest.getDeliveryDate());
+
+        boolean isRented = orderService.order(orderRequest.getUser(), orderRequest.getItem(),
+                orderRequest.getOrderDate(), orderRequest.getDeliveryDate());
 
         if (isRented) {
             informationService.inform(orderRequest.getUser(), orderRequest.getItem());
             orderRepository.createOrder(orderRequest.getUser(), orderRequest.getItem(), orderRequest.getOrderDate(), orderRequest.getDeliveryDate());
+
             return new OrderDto(orderRequest.getUser(), orderRequest.getItem(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), orderRequest.getItem(), false);

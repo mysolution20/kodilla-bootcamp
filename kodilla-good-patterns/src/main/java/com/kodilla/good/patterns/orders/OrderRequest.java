@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challanges;
+package com.kodilla.good.patterns.orders;
 
 import java.time.LocalDate;
 
@@ -13,7 +13,6 @@ public class OrderRequest {
         this.item = item;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
-
     }
 
     public User getUser() {

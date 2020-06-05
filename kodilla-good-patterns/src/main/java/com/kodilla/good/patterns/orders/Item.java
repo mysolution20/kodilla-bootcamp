@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challanges;
+package com.kodilla.good.patterns.orders;
 
 public class Item {
     private final String nameOfItem;

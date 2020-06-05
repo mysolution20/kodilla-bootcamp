@@ -1,9 +1,10 @@
 package com.kodilla.good.patterns.challanges;
 
+import java.util.stream.Collectors;
 public class GoodPatternsMain {
 
     public static void main(String[] args) {
-/**     // left for education purposes
+
  System.out.println("************************************************");
  System.out.println("---- Zadanie: funkcyjna iteracja po tytułach ----");
  System.out.println();
@@ -15,12 +16,7 @@ public class GoodPatternsMain {
 
  System.out.println(flatStringLine);
  System.out.println(movieStore.getMovies());
- System.out.println("************************************************");*/
+ System.out.println("************************************************");
 
-          OrderRequest orderRequest = new OrderRequestExecute().order();
-
-        ProductOrderService productOrderService = new ProductOrderService(new MailService(), new GoodsOrderService(),
-                new GoodsOrderRepository());
-        productOrderService.assembly(orderRequest);
     }
 }

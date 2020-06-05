@@ -1,7 +1,6 @@
-package com.kodilla.good.patterns.challanges;
+package com.kodilla.good.patterns.orders;
 
 public class MailService implements InformationService {
-
     @Override
     public void inform(User user, Item item) {
         System.out.println("Mail has sent to " + user.getName() + " " + user.getUserName()
