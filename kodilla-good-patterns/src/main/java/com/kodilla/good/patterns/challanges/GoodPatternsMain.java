@@ -17,8 +17,7 @@ public class GoodPatternsMain {
  System.out.println(movieStore.getMovies());
  System.out.println("************************************************");*/
 
-        OrderRequestExecute orderRequestExecute = new OrderRequestExecute();
-        OrderRequest orderRequest = new OrderRequestExecute().order();
+          OrderRequest orderRequest = new OrderRequestExecute().order();
 
         ProductOrderService productOrderService = new ProductOrderService(new MailService(), new GoodsOrderService(),
                 new GoodsOrderRepository());
