@@ -15,10 +15,10 @@ public class ProductOrderService {
 
     public OrderDto assembly(final OrderRequest orderRequest) {
 
-        boolean isRented = orderService.order(orderRequest.getUser(), orderRequest.getItem(),
+        boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getItem(),
                 orderRequest.getOrderDate(), orderRequest.getDeliveryDate());
 
-        if (isRented) {
+        if (isOrdered) {
             informationService.inform(orderRequest.getUser(), orderRequest.getItem());
             orderRepository.createOrder(orderRequest.getUser(), orderRequest.getItem(), orderRequest.getOrderDate(), orderRequest.getDeliveryDate());
 
@@ -27,4 +27,5 @@ public class ProductOrderService {
             return new OrderDto(orderRequest.getUser(), orderRequest.getItem(), false);
         }
     }
+
 }

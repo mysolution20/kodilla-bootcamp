@@ -1,5 +1,8 @@
 package com.kodilla.good.patterns.orders;
 
+import com.kodilla.good.patterns.food2door.FoodProducer;
+import com.kodilla.good.patterns.food2door.DeliveryCompletion;
+
 import java.time.LocalDate;
 
 public class OrderRequestExecute {
