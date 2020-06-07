@@ -1,12 +1,12 @@
 package com.kodilla.good.patterns.food2door;
 
-public class executionOfContractDto {
+public class ExecutionOfContractDto {
     public FoodProducer foodProducer;
     public Buyer buyer;
     public FoodItem foodItem;
     public boolean isAccepted;
 
-    public executionOfContractDto(FoodProducer foodProducer, Buyer buyer, FoodItem foodItem, boolean isAccepted) {
+    public ExecutionOfContractDto(FoodProducer foodProducer, Buyer buyer, FoodItem foodItem, boolean isAccepted) {
         this.foodProducer = foodProducer;
         this.buyer = buyer;
         this.foodItem = foodItem;

@@ -13,31 +13,29 @@ public class ProductDeliveryService {
         this.deliveryRepository = deliveryRepository;
     }
 
-    public executionOfContractDto assembly(final DeliveryCompletion deliveryCompletion) {
+    public ExecutionOfContractDto assembly(final DeliveryCompletion deliveryCompletion) {
+        DeliveryRequest assemblyDelivery = deliveryCompletion.getDeliveryRequest();
 
-        boolean isCompleted = deliveryService.delivery(deliveryCompletion.getFoodProducer()
-                , deliveryCompletion.getDeliveryRequest()
-        );
+        boolean isCompleted = deliveryService.delivery(deliveryCompletion.getFoodProducer(), assemblyDelivery);
 
         if (isCompleted) {
-            informationFoodService.inform(deliveryCompletion.getFoodProducer()
-                    , deliveryCompletion.getDeliveryRequest().getBuyer()
-                    , deliveryCompletion.getDeliveryRequest().getFoodItem());
+            informationFoodService.inform(deliveryCompletion.getFoodProducer(), assemblyDelivery.getBuyer()
+                    , assemblyDelivery.getFoodItem());
 
             deliveryRepository.createDelivery(deliveryCompletion.getFoodProducer()
-                    , deliveryCompletion.getDeliveryRequest().getBuyer()
-                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
-                    , deliveryCompletion.getDeliveryRequest().getOrderDate()
-                    , deliveryCompletion.getDeliveryRequest().getDeliveryDate()
-            );
-            return new executionOfContractDto(deliveryCompletion.getFoodProducer()
-                    , deliveryCompletion.getDeliveryRequest().getBuyer()
-                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
+                    , assemblyDelivery.getBuyer()
+                    , assemblyDelivery.getFoodItem()
+                    , assemblyDelivery.getOrderDate()
+                    , assemblyDelivery.getDeliveryDate());
+
+            return new ExecutionOfContractDto(deliveryCompletion.getFoodProducer()
+                    , assemblyDelivery.getBuyer()
+                    , assemblyDelivery.getFoodItem()
                     , true);
         } else {
-            return new executionOfContractDto(deliveryCompletion.getFoodProducer()
-                    , deliveryCompletion.getDeliveryRequest().getBuyer()
-                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
+            return new ExecutionOfContractDto(deliveryCompletion.getFoodProducer()
+                    , assemblyDelivery.getBuyer()
+                    , assemblyDelivery.getFoodItem()
                     , false);
         }
     }
