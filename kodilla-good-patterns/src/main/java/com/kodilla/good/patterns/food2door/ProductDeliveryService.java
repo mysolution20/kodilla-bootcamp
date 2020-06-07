@@ -1,22 +1,44 @@
 package com.kodilla.good.patterns.food2door;
 
-import com.kodilla.good.patterns.orders.*;
-
 public class ProductDeliveryService {
-    private final InformationService informationService;
-    private final OrderService orderService;
-    private final OrderRepository orderRepository;
+    private final InformationFoodService informationFoodService;
+    private final DeliveryService deliveryService;
+    private final DeliveryRepository deliveryRepository;
 
-    public ProductDeliveryService(final InformationService informationService,
-                               final OrderService orderService,
-                               final OrderRepository orderRepository) {
-        this.informationService = informationService;
-        this.orderService = orderService;
-        this.orderRepository = orderRepository;
+    public ProductDeliveryService(final InformationFoodService informationFoodService,
+                                  final DeliveryService deliveryService,
+                                  final DeliveryRepository deliveryRepository) {
+        this.informationFoodService = informationFoodService;
+        this.deliveryService = deliveryService;
+        this.deliveryRepository = deliveryRepository;
     }
 
-//    public OrderDto assembly(final OrderRequest orderRequest) {
-//
-//        return getOrderDto(orderRequest, orderService, informationService, orderRepository);
-//    }
+    public executionOfContractDto assembly(final DeliveryCompletion deliveryCompletion) {
+
+        boolean isCompleted = deliveryService.delivery(deliveryCompletion.getFoodProducer()
+                , deliveryCompletion.getDeliveryRequest()
+        );
+
+        if (isCompleted) {
+            informationFoodService.inform(deliveryCompletion.getFoodProducer()
+                    , deliveryCompletion.getDeliveryRequest().getBuyer()
+                    , deliveryCompletion.getDeliveryRequest().getFoodItem());
+
+            deliveryRepository.createDelivery(deliveryCompletion.getFoodProducer()
+                    , deliveryCompletion.getDeliveryRequest().getBuyer()
+                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
+                    , deliveryCompletion.getDeliveryRequest().getOrderDate()
+                    , deliveryCompletion.getDeliveryRequest().getDeliveryDate()
+            );
+            return new executionOfContractDto(deliveryCompletion.getFoodProducer()
+                    , deliveryCompletion.getDeliveryRequest().getBuyer()
+                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
+                    , true);
+        } else {
+            return new executionOfContractDto(deliveryCompletion.getFoodProducer()
+                    , deliveryCompletion.getDeliveryRequest().getBuyer()
+                    , deliveryCompletion.getDeliveryRequest().getFoodItem()
+                    , false);
+        }
+    }
 }

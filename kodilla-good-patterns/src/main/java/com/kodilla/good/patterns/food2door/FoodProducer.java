@@ -3,7 +3,7 @@ package com.kodilla.good.patterns.food2door;
 
 import java.util.Objects;
 
-public class FoodProducer  {
+public class FoodProducer {
     private final String producerName;
 
     public FoodProducer(String producerName) {

@@ -1,20 +1,19 @@
 package com.kodilla.good.patterns.food2door;
-import com.kodilla.good.patterns.orders.OrderRequest;
 
 public class DeliveryCompletion {
     FoodProducer foodProducer;
-     OrderRequest orderRequest;
+    DeliveryRequest deliveryRequest;
 
-    public DeliveryCompletion(FoodProducer foodProducer, OrderRequest orderRequest) {
+    public DeliveryCompletion(FoodProducer foodProducer, DeliveryRequest deliveryRequest) {
         this.foodProducer = foodProducer;
-        this.orderRequest = orderRequest;
+        this.deliveryRequest = deliveryRequest;
     }
 
     public FoodProducer getFoodProducer() {
         return foodProducer;
     }
 
-    public OrderRequest getOrderRequest() {
-        return orderRequest;
+    public DeliveryRequest getDeliveryRequest() {
+        return deliveryRequest;
     }
 }
