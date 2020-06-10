@@ -33,9 +33,9 @@ public class CalculatorTestSuite {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Formula formula = (Formula) context.getBean("add");
+        Formula formula =  context.getBean(Calculator.class);
         //When
-        double val = formula.countFormula(2, 2);
+        double val = formula.add(2, 2);
         //Then
         Assert.assertEquals(4.00, val, 0);
     }
@@ -45,9 +45,9 @@ public class CalculatorTestSuite {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Formula formula = (Formula) context.getBean("sub");
+        Formula formula = context.getBean(Calculator.class);
         //When
-        double val = formula.countFormula(2, 2);
+        double val = formula.sub(2, 2);
         //Then
         Assert.assertEquals(0.00, val, 0);
     }
@@ -57,9 +57,9 @@ public class CalculatorTestSuite {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Formula formula = (Formula) context.getBean("mul");
+        Formula formula = context.getBean(Calculator.class);
         //When
-        double val = formula.countFormula(2, 2);
+        double val = formula.mul(2, 2);
         //Then
         Assert.assertEquals(4.00, val, 0);
     }
@@ -69,23 +69,10 @@ public class CalculatorTestSuite {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Formula formula = (Formula) context.getBean("div");
+        Formula formula = context.getBean(Calculator.class);
         //When
-        double val = formula.countFormula(2, 2);
+        double val = formula.div(2, 2);
         //Then
         Assert.assertEquals(1.00, val, 0);
-    }
-
-    @Test
-    public void testDisplayValueFormula() {
-        //Given
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Display display = context.getBean(Display.class);
-        //When
-
-        display.displayValue();
-        //Then
-
     }
 }

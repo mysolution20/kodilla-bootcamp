@@ -1,5 +1,9 @@
 package com.kodilla.spring.calculator;
 
 public interface Formula {
-   double countFormula(double a, double b);
-}
+   double add(double a, double b);
+   double sub(double a, double b);
+   double mul(double a, double b);
+   double div(double a, double b);
+   }
+
