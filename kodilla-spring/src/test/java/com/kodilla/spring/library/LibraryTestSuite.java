@@ -1,4 +1,4 @@
-package com.kodilla.spring.forum;
+package com.kodilla.spring.library;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -9,34 +9,45 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ForumUserTestSuite {
+public class LibraryTestSuite {
     private static int testCounter = 0;
 
     @BeforeClass
     public static void beforeAllTests() {
-        System.out.println("Beginning of users tests.");
+        System.out.println("Beginning of library tests.");
     }
 
     @AfterClass
     public static void afterAllTests() {
-        System.out.println("All users tests are finished.");
+        System.out.println("All library tests are finished.");
     }
 
     @Before
     public void beforeEveryTest() {
         testCounter++;
-        System.out.println("Preparing to execute user test #" + testCounter);
+        System.out.println("Preparing to execute library test #" + testCounter);
     }
-
     @Test
-    public void testForumUserShouldHaveUserNameEqualsJohnSmith() {
+    public void testLoadFromDb() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
-        ForumUser forumUser = context.getBean(ForumUser.class);
+        Library library = context.getBean(Library.class);
         //When
-        String name = forumUser.getUsername();
+        library.loadFromDb();
         //Then
-        Assert.assertEquals("John Smith", name);
+        //do nothing
+    }
+
+    @Test
+    public void testSaveToDb() {
+        //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Library library = context.getBean(Library.class);
+        //When
+        library.saveToDb();
+        //Then
+        //do nothing
     }
 }
