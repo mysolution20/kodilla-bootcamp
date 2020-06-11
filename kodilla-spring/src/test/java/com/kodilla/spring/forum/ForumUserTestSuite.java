@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ForumUserTestSuite {
     private static int testCounter = 0;
-
     @BeforeClass
     public static void beforeAllTests() {
         System.out.println("Beginning of users tests.");

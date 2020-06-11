@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class BoardTestSuite {
     private static int testCounter = 0;
-
     @BeforeClass
     public static void beforeAllTests() {
         System.out.println("Beginning of tasks tests.");
@@ -39,12 +38,11 @@ public class BoardTestSuite {
         String taskListInProgress = board.getInProgressList();
         String taskListToDo = board.getToDoList();
 //        Then
-        Assert.assertEquals("Task No.1, done", taskListInDone);
-        Assert.assertEquals("Task No.2, in progress", taskListInProgress);
-        Assert.assertEquals("Task No.3, to do", taskListToDo);
+        Assert.assertEquals("Task No.1, done and Task No.4, done", taskListInDone);
+        Assert.assertEquals("Task No.2, in progress and Task No.5, in progress", taskListInProgress);
+        Assert.assertEquals("Task No.3, to do and Task No.6, to do", taskListToDo);
         System.out.println();
-        System.out.println("All tasks on the board are as follows: \n" +
-                taskListInDone + " and \n" + taskListInProgress + " and \n" +
-                taskListToDo + ".");
+        System.out.println("Tasks done: " + taskListInDone +","+ "\nand tasks in progress: " + taskListInProgress+","+
+                 "\nand tasks to do: " + taskListToDo + ".");
     }
 }
