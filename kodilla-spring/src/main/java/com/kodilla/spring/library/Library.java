@@ -6,13 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+//@Service
 public class Library {
     private final List<String> books = new ArrayList<>();
 
 /** wstrzykiwanie zależności bezpośrednio do pola klasy*/
 
-    @Autowired
+//    @Autowired
     private  LibraryDbController libraryDbController;
 
 /**
@@ -22,13 +22,12 @@ public class Library {
         this.libraryDbController = libraryDbController;
     }*/
 
-/**
+
     // wstrzykiwanie przez konstruktor z adnotacją @Autowired
-        @Autowired
+//        @Autowired
         public Library(final LibraryDbController libraryDbController) {
         this.libraryDbController = libraryDbController;
-    }*/
-
+    }
     public Library() {
         // do nothing
     }
