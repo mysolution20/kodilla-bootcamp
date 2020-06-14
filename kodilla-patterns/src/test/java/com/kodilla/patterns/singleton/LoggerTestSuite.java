@@ -9,30 +9,30 @@ public class LoggerTestSuite {
 
     @BeforeClass
     public static void openSettingsLog() {
-        Logger.log("gameBoyLog").open();
+        Logger.getInstance().open();
     }
 
     @AfterClass
     public static void closeSettingsLog() {
-        Logger.close();
+        Logger.getInstance().close();
     }
 
     @Test
     public void testLastLog() {
         //Given
-        String log = "gameBoyLog";
+        String lastLogText = "gameBoyLog";
         //When
-        String stringLog = Logger.getLastLog();
+        Logger.getInstance().log(lastLogText);
         //Then
-        Assert.assertEquals(log, stringLog);
-        System.out.println("LogText: " + stringLog);
+        Assert.assertEquals(lastLogText, Logger.getInstance().getLastLog());
+        System.out.println("LogText: " + lastLogText);
     }
 
     @Test
     public void testLoadingLog() {
         //Given
         //When
-        boolean result = Logger.loadSettingLog();
+        boolean result = Logger.getInstance().loadSettingLog();
         //Then
         Assert.assertTrue(result);
     }
