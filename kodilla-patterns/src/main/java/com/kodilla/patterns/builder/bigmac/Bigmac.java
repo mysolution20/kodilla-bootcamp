@@ -34,8 +34,9 @@ public class Bigmac {
             ingredients.add(ingredient);
             return this;
         }
+
         public Bigmac build() {
-            return new Bigmac(bun, burgers, sauces,ingredients);
+            return new Bigmac(bun, burgers, sauces, ingredients);
         }
     }
 

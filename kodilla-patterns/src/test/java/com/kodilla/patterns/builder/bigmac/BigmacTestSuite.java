@@ -1,26 +1,26 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import com.kodilla.patterns.builder.pizza.Pizza;
 import org.junit.*;
 
-public class BigmacTestSuite
-{
-        private static int testCounter = 0;
-        @BeforeClass
-        public static void beforeAllTests() {
-            System.out.println("Beginning of BigmacTests tests.");
-        }
+public class BigmacTestSuite {
+    private static int testCounter = 0;
 
-        @AfterClass
-        public static void afterAllTests() {
-            System.out.println("All BigmacTests tests are finished.");
-        }
+    @BeforeClass
+    public static void beforeAllTests() {
+        System.out.println("Beginning of BigmacTests tests.");
+    }
 
-        @Before
-        public void beforeEveryTest() {
-            testCounter++;
-            System.out.println("Preparing to execute BigmacTest test #" + testCounter);
-        }
+    @AfterClass
+    public static void afterAllTests() {
+        System.out.println("All BigmacTests tests are finished.");
+    }
+
+    @Before
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute BigmacTest test #" + testCounter);
+    }
+
     @Test
     public void testNewBigmacNumberOfIngredentShouldBe4() {
         //Given
@@ -40,6 +40,7 @@ public class BigmacTestSuite
         //Then
         Assert.assertEquals(4, howManyIngredients);
     }
+
     @Test
     public void testNewBigmacNumberOfTypeOfSaucesShouldBe2() {
         //Given
@@ -59,6 +60,7 @@ public class BigmacTestSuite
         //Then
         Assert.assertEquals(4, howManyTypesOfSauces);
     }
+
     @Test
     public void testNewBigmacNumberOfBurgersShouldBe2() {
         //Given
@@ -78,6 +80,7 @@ public class BigmacTestSuite
         //Then
         Assert.assertEquals(2, howManyBurgers);
     }
+
     @Test
     public void testNewBigmacTypeOfBunShouldBeBun() {
         //Given
