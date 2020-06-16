@@ -1,6 +1,7 @@
 package com.kodilla.patterns.prototype.library;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Book {
     final private String title;
@@ -32,5 +33,20 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", publicationDate=" + publicationDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(getTitle(), book.getTitle()) &&
+                Objects.equals(getAuthor(), book.getAuthor()) &&
+                Objects.equals(getPublicationDate(), book.getPublicationDate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getAuthor(), getPublicationDate());
     }
 }
