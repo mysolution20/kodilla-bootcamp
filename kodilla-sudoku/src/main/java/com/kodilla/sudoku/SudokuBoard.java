@@ -33,18 +33,23 @@ public class SudokuBoard extends SudokuBoardPrototype{
         return board[column].getSudokuElements().get(row).getValue();
     }
 
-    public boolean canResolve() throws Exception {
+    public boolean canResolve()  {
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 if (getBoard()[column].getSudokuElements().get(row).getValue() == -1) {
                     for (int value = 1; value <= 9; value++) {
-                        if (setNum(row, column, value)) {
-                            board[column].getSudokuElements().get(row).setValue(value);
-                            if (canResolve()) {
-                                return true;
-                            } else {
-                                board[column].getSudokuElements().get(row).setValue(-1);
+                        try {
+                            if (setNum(row, column, value)) {
+                                board[column].getSudokuElements().get(row).setValue(value);
+                                if (canResolve()) {
+                                    return true;
+                                } else {
+                                    board[column].getSudokuElements().get(row).setValue(-1);
+                                }
                             }
+                        } catch (IncorrectValueException e) {
+                            System.out.println("Unexpected values: "+ e.getMessage());
+                            e.printStackTrace();
                         }
                     }
                     return false;
@@ -77,6 +82,7 @@ public class SudokuBoard extends SudokuBoardPrototype{
         }
         return sudokuResolvedBoard.toString();
     }
+
     @Override
     public String toString() {
         StringBuilder handFilledBoard = new StringBuilder("    1   2   3   4   5   6   7   8   9" + "\n");

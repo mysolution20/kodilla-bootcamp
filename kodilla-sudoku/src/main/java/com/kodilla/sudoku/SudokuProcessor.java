@@ -3,7 +3,7 @@ package com.kodilla.sudoku;
 public class SudokuProcessor {
 
     private SudokuBoard board;
-    public boolean processSudoku() throws Exception {
+    public boolean processSudoku()  {
 
         board = new SudokuBoard();
         boolean finishGame = false;
