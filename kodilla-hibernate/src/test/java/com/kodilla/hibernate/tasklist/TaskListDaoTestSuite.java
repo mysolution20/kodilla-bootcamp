@@ -12,10 +12,11 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TaskListDaoTestSuite {
-    @Autowired
-    private TaskListDao taskListDao;
     private static final String DESCRIPTION = "Test: new TaskList by Learn Hibernate";
     private static final String LISTNAME = "Working plan";
+
+    @Autowired
+    private TaskListDao taskListDao;
 
     @Test
     public void testFindByListName() {

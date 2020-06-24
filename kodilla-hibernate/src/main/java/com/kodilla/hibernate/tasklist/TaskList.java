@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="TASKLISTS")
+@Table(name = "TASKLISTS")
 public class TaskList {
     private int id;
     private String listName;
