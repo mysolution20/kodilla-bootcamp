@@ -3,6 +3,7 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,47 +11,81 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    InvoiceDao invoiceDao;
-    @Autowired
     ProductDao productDao;
+    @Autowired
+    ItemDao itemDao;
+    @Autowired
+    InvoiceDao invoiceDao;
 
     @Test
-    public void testInvoiceDaoSave(){
+    public void testInvoiceDaoSave() {
         //Given
         Product apples = new Product("Apples");
-        Product strawberries= new Product("Strawberries");
+        Product strawberries = new Product("Strawberries");
+        Product carrot = new Product("Carrot");
 
-        Product pears = new Product("Carrot");
-        Product plums= new Product("Parsley");
+        Item itemApples = new Item(new BigDecimal(4.4), 2, new BigDecimal(8.8));
+        Item itemStrawberries = new Item(new BigDecimal(2.1), 3, new BigDecimal(6.3));
+        Item itemCarrot = new Item(new BigDecimal(4.2), 4, new BigDecimal(16.8));
 
-        List<Product> fruits = new ArrayList<>();
-        fruits.add(apples);
-        fruits.add(strawberries);
+        itemApples.setProduct(apples);
+        itemStrawberries.setProduct(strawberries);
+        itemCarrot.setProduct(carrot);
 
-        List<Product> vegetables = new ArrayList<>();
-        vegetables.add(pears);
-        vegetables.add(plums);
+        Invoice invoice = new Invoice("AA/001/06/2020");
+        invoice.getItems().add(itemApples);
+        invoice.getItems().add(itemStrawberries);
+        invoice.getItems().add(itemCarrot);
 
-        Item item = new Item();
+        //When
+        productDao.save(apples);
+        int applesId = apples.getId();
+        productDao.save(strawberries);
+        int strawberriesId = strawberries.getId();
+        productDao.save(carrot);
+        int carrotId = carrot.getId();
 
-        item.setProducts(fruits);
-        Item item1 = new Item(fruits,new BigDecimal(4.4),2,new BigDecimal(8.8));
-        Item item2 = new Item(vegetables,new BigDecimal(2.1),3,new BigDecimal(6.3));
+        itemDao.save(itemApples);
+        int itemApplesId = itemApples.getId();
+        itemDao.save(itemStrawberries);
+        int itemStrawberriesId = itemStrawberries.getId();
+        itemDao.save(itemCarrot);
+        int itemCarrotId = itemCarrot.getId();
 
+        invoiceDao.save(invoice);
+        int invoiceId = invoice.getId();
 
-        List<Item> items = new ArrayList<>();
-        items.add(item1);
-        items.add(item2);
+        //Then
+        Assert.assertNotEquals(0, invoiceId);
 
-        Invoice invoice = new Invoice("AA/0001/06/2020",items);
+        Assert.assertNotEquals(0, applesId);
+        Assert.assertNotEquals(0, strawberriesId);
+        Assert.assertNotEquals(0, carrotId);
 
+        Assert.assertNotEquals(0, itemApplesId);
+        Assert.assertNotEquals(0, itemStrawberriesId);
+        Assert.assertNotEquals(0, itemCarrotId);
 
+//        // CleanUp
+//        try {
+//            invoiceDao.deleteById(invoiceId);
+//
+//            productDao.deleteById(applesId);
+//            productDao.deleteById(strawberriesId);
+//            productDao.deleteById(pearsId);
+//
+//            itemDao.deleteById(itemApplesId);
+//            itemDao.deleteById(itemStrawberriesId);
+//            itemDao.deleteById(itemPearsId);
+//
+//        } catch (Exception e) {
+//            System.out.println("All records have been cleaned Up.");
+//        }
     }
+
 }

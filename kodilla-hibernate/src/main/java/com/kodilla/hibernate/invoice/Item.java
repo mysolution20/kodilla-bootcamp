@@ -3,7 +3,6 @@ package com.kodilla.hibernate.invoice;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Table(name = "ITEMS")
@@ -14,15 +13,15 @@ public class Item {
     private int quantity;
     private BigDecimal value;
     private Invoice invoice;
-    private List<Product> products;
 
+    public Item() {
+    }
 
     public Item(BigDecimal price, int quantity, BigDecimal value) {
         this.price = price;
         this.quantity = quantity;
         this.value = value;
     }
-
 
     @Id
     @GeneratedValue
@@ -31,31 +30,6 @@ public class Item {
     public int getId() {
         return id;
     }
-
-    @NotNull
-    @Column(name = "PRODUCT_NAME")
-    public Product getProduct() {
-        return product;
-    }
-
-    private void setProduct(Product product) {
-        this.product = product;
-    }
-
-
-    @OneToMany(
-            targetEntity = Product.class,
-            mappedBy = "item",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-    public List<Product> getProducts() {
-        return products;
-    }
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
 
     @NotNull
     @Column(name = "PRICE")
@@ -81,11 +55,17 @@ public class Item {
         return invoice;
     }
 
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    public Product getProduct() {
+        return product;
     }
 
+    public void setInvoice(Invoice invoice) { this.invoice = invoice;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     private void setId(int id) {
         this.id = id;
