@@ -66,21 +66,21 @@ public class InvoiceDaoTestSuite {
         Assert.assertNotEquals(0, itemStrawberriesId);
         Assert.assertNotEquals(0, itemCarrotId);
 
-//        // CleanUp
-//        try {
-//            invoiceDao.deleteById(invoiceId);
-//
-//            productDao.deleteById(applesId);
-//            productDao.deleteById(strawberriesId);
-//            productDao.deleteById(pearsId);
-//
-//            itemDao.deleteById(itemApplesId);
-//            itemDao.deleteById(itemStrawberriesId);
-//            itemDao.deleteById(itemPearsId);
-//
-//        } catch (Exception e) {
-//            System.out.println("All records have been cleaned Up.");
-//        }
+        // CleanUp
+        try {
+            invoiceDao.deleteById(invoiceId);
+
+            productDao.deleteById(applesId);
+            productDao.deleteById(strawberriesId);
+            productDao.deleteById(carrotId);
+
+            itemDao.deleteById(itemApplesId);
+            itemDao.deleteById(itemStrawberriesId);
+            itemDao.deleteById(itemCarrotId);
+
+        } catch (Exception e) {
+            System.out.println("All records have been cleaned Up.");
+        }
     }
 
 }
