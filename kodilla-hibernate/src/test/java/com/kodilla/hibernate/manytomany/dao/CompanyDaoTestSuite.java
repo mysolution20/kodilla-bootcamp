@@ -2,6 +2,7 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.task.Task;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,14 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
+
     @Autowired
     CompanyDao companyDao;
 
+    @Autowired
+    EmployeeDao employeeDao;
+
     @Test
-    public void testSaveManyToMany(){
+    public void testSaveManyToMany() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -61,17 +68,47 @@ public class CompanyDaoTestSuite {
         }
     }
 
-
-/*  @Test
-    public void testDeleteById(){
-        try {
-            companyDao.deleteById(35);
-            companyDao.deleteById(37);
-            companyDao.deleteById(39);
-        } catch (Exception e) {
-            //do nothing
-        }
-
-   }*/
-
+//    @Test
+//    public void testQueryCollectorsAsForCompanyDaoAndEmployeeDao() {
+//        //Given
+//        Employee janKowalki = new Employee("Jan", "Kowalki");
+//        Employee agnieszkaNowak = new Employee("Agnieszka", "Nowak");
+//
+//        Company biedronka = new Company("Biedronka");
+//        Company lidl = new Company("Lidl");
+//
+//        biedronka.getEmployees().add(janKowalki);
+//        lidl.getEmployees().add(agnieszkaNowak);
+//
+//        janKowalki.getCompanies().add(biedronka);
+//        agnieszkaNowak.getCompanies().add(lidl);
+//
+//        //When
+//        companyDao.save(biedronka);
+//        int biedronkaId = biedronka.getId();
+//        companyDao.save(lidl);
+//        int lidlId = lidl.getId();
+//
+//        employeeDao.save(janKowalki);
+//        int janKowalkiId = janKowalki.getId();
+//        employeeDao.save(agnieszkaNowak);
+//        int agnieszkaNowakId = agnieszkaNowak.getId();
+//
+//        List<Company> companiesWithThreeFirstSigns = companyDao.retrieveCompaniesWithThreeFirstSigns("Bie");
+//        List<Employee> employeesWithParticularLastName = employeeDao.retrieveEmployeesWithParticularLastName("Nowak");
+//
+//        //Then
+//        Assert.assertEquals(1, companiesWithThreeFirstSigns.size());
+//        Assert.assertEquals(1, employeesWithParticularLastName.size());
+//
+///*        try {
+//            companyDao.deleteById(biedronkaId);
+//            companyDao.deleteById(lidlId);
+//            employeeDao.deleteById(janKowalkiId);
+//            employeeDao.deleteById(agnieszkaNowakId);
+//        } finally {
+//            //CleanUp
+//            System.out.println("All records have cleaned up");
+//        }*/
+//    }
 }

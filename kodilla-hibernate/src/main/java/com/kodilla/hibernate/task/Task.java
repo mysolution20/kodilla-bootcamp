@@ -14,12 +14,16 @@ import java.util.Date;
         @NamedQuery(
                 name = "Task.retrieveShortTasks",
                 query = "FROM Task WHERE duration <= 10"
+        ),
+        @NamedQuery(
+                name = "Task.retrieveTasksWithDurationLongerThen",
+                query = "FROM Task WHERE duration > :DURATION"
         )
 })
 
 @NamedNativeQuery(
         name = "Task.retrieveTasksWithEnoughTime",
-        query = "SELECT * FROM TASKS " +
+        query = "SELECT * FROM TASKS " +   /** <-- UWAGA: o spacji miedzy TASKS WHERE !!! */
                 "WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY),NOW()) >5 ",
         resultClass = Task.class
 )
