@@ -42,22 +42,17 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(itemStrawberries);
         invoice.getItems().add(itemCarrot);
 
+        invoiceDao.save(invoice);
+
         //When
-        productDao.save(apples);
         int applesId = apples.getId();
-        productDao.save(strawberries);
         int strawberriesId = strawberries.getId();
-        productDao.save(carrot);
         int carrotId = carrot.getId();
 
-        itemDao.save(itemApples);
         int itemApplesId = itemApples.getId();
-        itemDao.save(itemStrawberries);
         int itemStrawberriesId = itemStrawberries.getId();
-        itemDao.save(itemCarrot);
         int itemCarrotId = itemCarrot.getId();
 
-        invoiceDao.save(invoice);
         int invoiceId = invoice.getId();
 
         //Then

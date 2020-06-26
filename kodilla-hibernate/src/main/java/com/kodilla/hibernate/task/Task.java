@@ -6,9 +6,26 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "Task.retrieveLongTasks",
+                query = "FROM Task WHERE duration > 10"
+        ),
+        @NamedQuery(
+                name = "Task.retrieveShortTasks",
+                query = "FROM Task WHERE duration <= 10"
+        )
+})
+
+@NamedNativeQuery(
+        name = "Task.retrieveTasksWithEnoughTime",
+        query = "SELECT * FROM TASKS " +
+                "WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY),NOW()) >5 ",
+        resultClass = Task.class
+)
 
 @Entity
-@Table(name="TASKS")
+@Table(name = "TASKS")
 public class Task {
     private int id;
     private String description;
@@ -34,30 +51,30 @@ public class Task {
         return id;
     }
 
-    @Column(name="DESCRIPTION")
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
 
     @NotNull
-    @Column(name="CREATED")
+    @Column(name = "CREATED")
     public Date getCreated() {
         return created;
     }
 
-    @Column(name="DURATION")
+    @Column(name = "DURATION")
     public int getDuration() {
         return duration;
     }
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="TASKS_FINANCIAL_ID")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASKS_FINANCIAL_ID")
     public TaskFinancialDetails getTaskFinancialDetails() {
         return taskFinancialDetails;
     }
 
     @ManyToOne
-    @JoinColumn(name="TASKLISTID")
+    @JoinColumn(name = "TASKLISTID")
     public TaskList getTaskList() {
         return taskList;
     }
