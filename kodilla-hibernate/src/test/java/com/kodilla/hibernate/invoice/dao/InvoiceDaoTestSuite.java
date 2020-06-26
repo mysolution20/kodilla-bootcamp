@@ -42,7 +42,13 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(itemStrawberries);
         invoice.getItems().add(itemCarrot);
 
+
         invoiceDao.save(invoice);
+        itemDao.save(itemApples);
+        itemDao.save(itemStrawberries);
+        itemDao.save(itemCarrot);
+
+
 
         //When
         int applesId = apples.getId();
@@ -66,21 +72,41 @@ public class InvoiceDaoTestSuite {
         Assert.assertNotEquals(0, itemStrawberriesId);
         Assert.assertNotEquals(0, itemCarrotId);
 
-        // CleanUp
+/*        // CleanUp
         try {
-            invoiceDao.deleteById(invoiceId);
+//            invoiceDao.deleteById(invoiceId);
+//
+//            productDao.deleteById(applesId);
+//            productDao.deleteById(strawberriesId);
+//            productDao.deleteById(carrotId);
+//
+//            itemDao.deleteById(itemApplesId);
+//            itemDao.deleteById(itemStrawberriesId);
+//            itemDao.deleteById(itemCarrotId);
 
-            productDao.deleteById(applesId);
-            productDao.deleteById(strawberriesId);
-            productDao.deleteById(carrotId);
+            itemDao.deleteAll();
+            productDao.deleteAll();
+            invoiceDao.deleteAll();
 
-            itemDao.deleteById(itemApplesId);
-            itemDao.deleteById(itemStrawberriesId);
-            itemDao.deleteById(itemCarrotId);
 
         } catch (Exception e) {
             System.out.println("All records have been cleaned Up.");
-        }
+        }*/
     }
+
+/*    @Test
+    public void deleteAll() {
+
+        try {
+            itemDao.deleteAll();
+            productDao.deleteAll();
+            invoiceDao.deleteAll();
+        }catch (Exception e) {
+            System.out.println("Records have not been cleaned Up.");
+        }finally {
+            System.out.println("All records have been cleaned Up.");
+        }
+
+    }*/
 
 }

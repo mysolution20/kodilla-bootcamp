@@ -2,7 +2,6 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
-import com.kodilla.hibernate.task.Task;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,55 +59,55 @@ public class CompanyDaoTestSuite {
 
         // CleanUp
         try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
+            // companyDao.deleteById(softwareMachineId);
+            // companyDao.deleteById(dataMaestersId);
+            // companyDao.deleteById(greyMatterId);
+            companyDao.deleteAll();
         } catch (Exception e) {
             //do nothing
+            System.out.println("All records have cleaned up by: companyDao");
         }
     }
 
-//    @Test
-//    public void testQueryCollectorsAsForCompanyDaoAndEmployeeDao() {
-//        //Given
-//        Employee janKowalki = new Employee("Jan", "Kowalki");
-//        Employee agnieszkaNowak = new Employee("Agnieszka", "Nowak");
-//
-//        Company biedronka = new Company("Biedronka");
-//        Company lidl = new Company("Lidl");
-//
-//        biedronka.getEmployees().add(janKowalki);
-//        lidl.getEmployees().add(agnieszkaNowak);
-//
-//        janKowalki.getCompanies().add(biedronka);
-//        agnieszkaNowak.getCompanies().add(lidl);
-//
-//        //When
-//        companyDao.save(biedronka);
-//        int biedronkaId = biedronka.getId();
-//        companyDao.save(lidl);
-//        int lidlId = lidl.getId();
-//
-//        employeeDao.save(janKowalki);
-//        int janKowalkiId = janKowalki.getId();
-//        employeeDao.save(agnieszkaNowak);
-//        int agnieszkaNowakId = agnieszkaNowak.getId();
-//
-//        List<Company> companiesWithThreeFirstSigns = companyDao.retrieveCompaniesWithThreeFirstSigns("Bie");
-//        List<Employee> employeesWithParticularLastName = employeeDao.retrieveEmployeesWithParticularLastName("Nowak");
-//
-//        //Then
-//        Assert.assertEquals(1, companiesWithThreeFirstSigns.size());
-//        Assert.assertEquals(1, employeesWithParticularLastName.size());
-//
-///*        try {
-//            companyDao.deleteById(biedronkaId);
-//            companyDao.deleteById(lidlId);
-//            employeeDao.deleteById(janKowalkiId);
-//            employeeDao.deleteById(agnieszkaNowakId);
-//        } finally {
-//            //CleanUp
-//            System.out.println("All records have cleaned up");
-//        }*/
-//    }
+    @Test
+    public void testQueryCollectorsAsForCompanyDaoAndEmployeeDao() {
+        //Given
+        Employee janKowalki = new Employee("Jan", "Kowalki");
+        Employee agnieszkaNowak = new Employee("Agnieszka", "Nowak");
+
+        Company biedronka = new Company("Biedronka");
+        Company lidl = new Company("Lidl");
+
+        biedronka.getEmployees().add(janKowalki);
+        lidl.getEmployees().add(agnieszkaNowak);
+
+        janKowalki.getCompanies().add(biedronka);
+        agnieszkaNowak.getCompanies().add(lidl);
+
+        //When
+        companyDao.save(biedronka);
+        int biedronkaId = biedronka.getId();
+        companyDao.save(lidl);
+        int lidlId = lidl.getId();
+
+        employeeDao.save(janKowalki);
+        int janKowalkiId = janKowalki.getId();
+        employeeDao.save(agnieszkaNowak);
+        int agnieszkaNowakId = agnieszkaNowak.getId();
+
+        List<Company> companiesWithThreeFirstSigns = companyDao.retrieveCompaniesWithThreeFirstSigns("Bie");
+        List<Employee> employeesWithParticularLastName = employeeDao.retrieveEmployeesWithParticularLastName("Nowak");
+
+        //Then
+        Assert.assertEquals(1, companiesWithThreeFirstSigns.size());
+        Assert.assertEquals(1, employeesWithParticularLastName.size());
+
+        try {
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
+        } finally {
+            //CleanUp
+            System.out.println("All records have cleaned up by: employeeDao and companyDao");
+        }
+    }
 }
