@@ -42,22 +42,24 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(itemStrawberries);
         invoice.getItems().add(itemCarrot);
 
-
         invoiceDao.save(invoice);
+
         itemDao.save(itemApples);
         itemDao.save(itemStrawberries);
         itemDao.save(itemCarrot);
 
-
+        productDao.save(apples);
+        productDao.save(strawberries);
+        productDao.save(carrot);
 
         //When
-        int applesId = apples.getId();
-        int strawberriesId = strawberries.getId();
-        int carrotId = carrot.getId();
-
         int itemApplesId = itemApples.getId();
         int itemStrawberriesId = itemStrawberries.getId();
         int itemCarrotId = itemCarrot.getId();
+
+        int applesId = apples.getId();
+        int strawberriesId = strawberries.getId();
+        int carrotId = carrot.getId();
 
         int invoiceId = invoice.getId();
 
@@ -72,41 +74,15 @@ public class InvoiceDaoTestSuite {
         Assert.assertNotEquals(0, itemStrawberriesId);
         Assert.assertNotEquals(0, itemCarrotId);
 
-/*        // CleanUp
+        // CleanUp
         try {
-//            invoiceDao.deleteById(invoiceId);
-//
-//            productDao.deleteById(applesId);
-//            productDao.deleteById(strawberriesId);
-//            productDao.deleteById(carrotId);
-//
-//            itemDao.deleteById(itemApplesId);
-//            itemDao.deleteById(itemStrawberriesId);
-//            itemDao.deleteById(itemCarrotId);
-
             itemDao.deleteAll();
             productDao.deleteAll();
             invoiceDao.deleteAll();
-
-
         } catch (Exception e) {
-            System.out.println("All records have been cleaned Up.");
-        }*/
+            System.out.println("Records have not been cleaned up.");
+        }
     }
 
-/*    @Test
-    public void deleteAll() {
-
-        try {
-            itemDao.deleteAll();
-            productDao.deleteAll();
-            invoiceDao.deleteAll();
-        }catch (Exception e) {
-            System.out.println("Records have not been cleaned Up.");
-        }finally {
-            System.out.println("All records have been cleaned Up.");
-        }
-
-    }*/
 
 }
