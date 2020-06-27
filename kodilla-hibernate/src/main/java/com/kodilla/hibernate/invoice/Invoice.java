@@ -19,6 +19,20 @@ public class Invoice {
         this.number = number;
     }
 
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "invoice",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -33,25 +47,10 @@ public class Invoice {
         return number;
     }
 
-    @OneToMany(
-            targetEntity = Item.class,
-            mappedBy = "invoice",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    public List<Item> getItems() {
-        return items;
-    }
-
-    private void setItems(List<Item> items) {
-        this.items = items;
-    }
-
     private void setId(int id) {
         this.id = id;
     }
     private void setNumber(String number) {
         this.number = number;
     }
-
 }

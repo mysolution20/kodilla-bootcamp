@@ -1,7 +1,5 @@
 package com.kodilla.hibernate.manytomany;
 
-import com.kodilla.hibernate.task.Task;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ import java.util.List;
 public class Company {
     private int id;
     private String name;
-    private List<Employee> employees  = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
@@ -41,7 +39,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;
     }

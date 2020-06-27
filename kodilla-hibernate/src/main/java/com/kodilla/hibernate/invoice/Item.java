@@ -50,15 +50,15 @@ public class Item {
     }
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INVOICE_ID")
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
     }
 
     public void setInvoice(Invoice invoice) {

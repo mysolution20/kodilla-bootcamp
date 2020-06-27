@@ -83,6 +83,4 @@ public class InvoiceDaoTestSuite {
             System.out.println("Records have not been cleaned up.");
         }
     }
-
-
 }
