@@ -86,14 +86,10 @@ public class CompanyDaoTestSuite {
 
         //When
         companyDao.save(biedronka);
-        int biedronkaId = biedronka.getId();
         companyDao.save(lidl);
-        int lidlId = lidl.getId();
 
         employeeDao.save(janKowalki);
-        int janKowalkiId = janKowalki.getId();
         employeeDao.save(agnieszkaNowak);
-        int agnieszkaNowakId = agnieszkaNowak.getId();
 
         List<Company> companiesWithThreeFirstSigns = companyDao.retrieveCompaniesWithThreeFirstSigns("Bie");
         List<Employee> employeesWithParticularLastName = employeeDao.retrieveEmployeesWithParticularLastName("Nowak");

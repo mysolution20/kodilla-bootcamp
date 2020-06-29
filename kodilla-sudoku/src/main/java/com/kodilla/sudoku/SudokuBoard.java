@@ -59,6 +59,33 @@ public class SudokuBoard extends SudokuBoardPrototype{
         return true;
     }
 
+//    public boolean canCheck()  {
+//        for (int row = 0; row < 9; row++) {
+//            for (int column = 0; column < 9; column++) {
+//                if (getBoard()[column].getSudokuElements().get(row).getValue() == -1) {
+//                    for (int value = 1; value <= 9; value++) {
+//                        try {
+//                            if (setNum(row, column, value)) {
+////                                board[column].getSudokuElements().get(row).setValue(value);
+////                                return true;
+//                                if (canCheck()) {
+//                                    return true;
+//                                } else {
+//                                    return false;
+//                                }
+//                            }
+//                        } catch (IncorrectValueException e) {
+//                            System.out.println("Unexpected values: "+ e.getMessage());
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                    return false;  // out of range
+//                }
+//            }
+//        }
+//        return true;
+//    }
+
     public void setStartElementOnNewGameBoard() {
         SudokuElement sudokuElement = new SudokuElement();
         for (int row = 0; row < 9; row++) {
