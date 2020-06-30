@@ -5,9 +5,9 @@ import java.util.List;
 
 import static com.kodilla.sudoku.Constants.*;
 
-public class SudokuBoard extends SudokuBoardPrototype{
+public class SudokuBoard extends SudokuBoardPrototype {
 
-     SudokuRow[] board = new SudokuRow[MAX_ROWS + 1];
+    SudokuRow[] board = new SudokuRow[MAX_ROWS + 1];
 
     public SudokuBoard() {
         for (int row = 0; row < MAX_ROWS; row++) {
@@ -33,7 +33,38 @@ public class SudokuBoard extends SudokuBoardPrototype{
         return board[column].getSudokuElements().get(row).getValue();
     }
 
-    public boolean canResolve()  {
+    public boolean checkIfEntryRepeat(int currentRow, int currentColumn, int currentValue) {
+        for (int r = 0; r < 9; r++) {
+            int boardRowVal = getBoard()[currentColumn].getSudokuElements().get(r).getValue();
+            if (boardRowVal == currentValue) {
+                System.out.println("Current value: " + currentValue + " repeats in the same column");
+                return true;
+            }
+        }
+
+        for (int col = 0; col < 9; col++) {
+            int boardColVal = getBoard()[col].getSudokuElements().get(currentRow).getValue();
+            if (boardColVal == currentValue) {
+                System.out.println("Current value: " + currentValue + ": repeats in the same row");
+                return true;
+            }
+        }
+
+        int rowStart = currentRow - currentRow % 3;
+        int colStart = currentColumn - currentColumn % 3;
+        for (int i = rowStart; i < rowStart + 3; i++) {
+            for (int j = colStart; j < colStart + 3; j++) {
+                int subBoardVal = getBoard()[j].getSudokuElements().get(i).getValue();
+                if (subBoardVal == currentValue) {
+                    System.out.println("Current value: " + subBoardVal + ": repeats in the same sub board");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean canResolve() {
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 if (getBoard()[column].getSudokuElements().get(row).getValue() == -1) {
@@ -48,7 +79,7 @@ public class SudokuBoard extends SudokuBoardPrototype{
                                 }
                             }
                         } catch (IncorrectValueException e) {
-                            System.out.println("Unexpected values: "+ e.getMessage());
+                            System.out.println("Unexpected values: " + e.getMessage());
                             e.printStackTrace();
                         }
                     }
@@ -58,33 +89,6 @@ public class SudokuBoard extends SudokuBoardPrototype{
         }
         return true;
     }
-
-//    public boolean canCheck()  {
-//        for (int row = 0; row < 9; row++) {
-//            for (int column = 0; column < 9; column++) {
-//                if (getBoard()[column].getSudokuElements().get(row).getValue() == -1) {
-//                    for (int value = 1; value <= 9; value++) {
-//                        try {
-//                            if (setNum(row, column, value)) {
-////                                board[column].getSudokuElements().get(row).setValue(value);
-////                                return true;
-//                                if (canCheck()) {
-//                                    return true;
-//                                } else {
-//                                    return false;
-//                                }
-//                            }
-//                        } catch (IncorrectValueException e) {
-//                            System.out.println("Unexpected values: "+ e.getMessage());
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                    return false;  // out of range
-//                }
-//            }
-//        }
-//        return true;
-//    }
 
     public void setStartElementOnNewGameBoard() {
         SudokuElement sudokuElement = new SudokuElement();
@@ -100,10 +104,7 @@ public class SudokuBoard extends SudokuBoardPrototype{
         for (int row = 0; row < MAX_ROWS; row++) {
             sudokuResolvedBoard.append(1 + row).append(" |");
             for (int column = 0; column < MAX_COLUMN; column++) {
-                sudokuResolvedBoard.append(" ");
-                sudokuResolvedBoard.append(getBoard()[column].getSudokuElements().get(row).getValue());
-                sudokuResolvedBoard.append(" ");
-                sudokuResolvedBoard.append("|");
+                sudokuResolvedBoard.append(" ").append(getBoard()[column].getSudokuElements().get(row).getValue()).append(" ").append("|");
             }
             sudokuResolvedBoard.append("\n");
         }
@@ -119,9 +120,7 @@ public class SudokuBoard extends SudokuBoardPrototype{
                 if (getBoard()[column].getSudokuElements().get(row).getValue() == -1) {
                     handFilledBoard.append(" - ");
                 } else {
-                    handFilledBoard.append(" ");
-                    handFilledBoard.append(getBoard()[column].getSudokuElements().get(row).getValue());
-                    handFilledBoard.append(" ");
+                    handFilledBoard.append(" ").append(getBoard()[column].getSudokuElements().get(row).getValue()).append(" ");
                 }
                 handFilledBoard.append("|");
             }
@@ -202,10 +201,10 @@ public class SudokuBoard extends SudokuBoardPrototype{
     }
 
     public SudokuBoard deepCopy() throws CloneNotSupportedException {
-//        SudokuBoard deepClonedBackTrackBoard = (SudokuBoard) super.clone();
+//      SudokuBoard deepClonedBackTrackBoard = (SudokuBoard) super.clone();
         SudokuBoard deepClonedBackTrackBoard = (SudokuBoard) this.clone();
-        deepClonedBackTrackBoard.board = new SudokuRow[MAX_ROWS+1];
-        for(int i = 0; i < MAX_ROWS; i++) {
+        deepClonedBackTrackBoard.board = new SudokuRow[MAX_ROWS + 1];
+        for (int i = 0; i < MAX_ROWS; i++) {
             List<SudokuElement> elements = board[i].getSudokuElements();
             for (int j = 0; j < elements.size(); j++) {
                 deepClonedBackTrackBoard.board[i].getSudokuElements().get(j).setValue(elements.get(j).getValue());

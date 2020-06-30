@@ -3,11 +3,11 @@ package com.kodilla.sudoku;
 public class SudokuProcessor {
 
     private SudokuBoard board;
-    public boolean processSudoku()  {
+
+    public boolean processSudoku() {
 
         board = new SudokuBoard();
         boolean finishGame = false;
-        boolean newGame = false;
         do {
             UserChoice choice = MenuList.getUserChoice();
             switch (choice.getChoiceType()) {
@@ -18,9 +18,13 @@ public class SudokuProcessor {
                     break;
                 case NEW_GAME:
                     board.setStartElementOnNewGameBoard();
-                    newGame = true;
                 case NEW_VALUE:
-                    setValue(choice);
+                    boolean ifRepeat = board.checkIfEntryRepeat(choice.getColumn() - 1, choice.getRow() - 1, choice.getValue());
+                    if (ifRepeat) {
+                        System.out.println("Current entered value will not solve the sudoku, please try again.");
+                    } else {
+                        setValue(choice);
+                    }
                     MenuList.show(board.toString());
                     break;
                 case SUDOKU_SOLVE:
@@ -28,7 +32,7 @@ public class SudokuProcessor {
                     MenuList.show(board.printFulfilledSudoku());
                     break;
             }
-        } while (!finishGame || !newGame);
+        } while (!finishGame);
         return true;
     }
 
