@@ -9,7 +9,7 @@ public class MenuList {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static UserChoice getUserChoice() {
-        System.out.println(USER_MANUAL());
+        System.out.println(printInstruction());
         System.out.println();
 
         String input = scanner.next();

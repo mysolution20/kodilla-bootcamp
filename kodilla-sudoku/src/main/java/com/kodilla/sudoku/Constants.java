@@ -9,7 +9,7 @@ public class Constants {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 9;
 
-    public static final String USER_MANUAL() {
+    public static String printInstruction() {
         return "==================== SUDOKU =====================\n" +
                 "  You can type: 3 numbers: rcv \n" +
                 "  where: r is row, c is column and v means value \n" +

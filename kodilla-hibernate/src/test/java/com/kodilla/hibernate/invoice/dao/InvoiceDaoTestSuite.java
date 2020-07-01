@@ -16,11 +16,7 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    ProductDao productDao;
-    @Autowired
     ItemDao itemDao;
-    @Autowired
-    InvoiceDao invoiceDao;
 
     @Test
     public void testInvoiceDaoSave() {
@@ -33,24 +29,30 @@ public class InvoiceDaoTestSuite {
         Item itemStrawberries = new Item(new BigDecimal(2.1), 3, new BigDecimal(6.3));
         Item itemCarrot = new Item(new BigDecimal(4.2), 4, new BigDecimal(16.8));
 
-        itemApples.setProduct(apples);
-        itemStrawberries.setProduct(strawberries);
-        itemCarrot.setProduct(carrot);
-
         Invoice invoice = new Invoice("AA/001/06/2020");
+
         invoice.getItems().add(itemApples);
         invoice.getItems().add(itemStrawberries);
         invoice.getItems().add(itemCarrot);
 
-        invoiceDao.save(invoice);
+        /**
+         * Z racji tego ze klucze obce sa jedynie w tabeli items
+         * to najpierw dolaczyc do encji Item product
+         * oraz Invoice za pomoca setterow i dopiero zapisac na bazie.
+         */
+
+        itemApples.setInvoice(invoice);
+        itemApples.setProduct(apples);
+
+        itemStrawberries.setInvoice(invoice);
+        itemStrawberries.setProduct(strawberries);
+
+        itemCarrot.setInvoice(invoice);
+        itemCarrot.setProduct(carrot);
 
         itemDao.save(itemApples);
         itemDao.save(itemStrawberries);
         itemDao.save(itemCarrot);
-
-        productDao.save(apples);
-        productDao.save(strawberries);
-        productDao.save(carrot);
 
         //When
         int itemApplesId = itemApples.getId();
@@ -77,8 +79,6 @@ public class InvoiceDaoTestSuite {
         // CleanUp
         try {
             itemDao.deleteAll();
-            productDao.deleteAll();
-            invoiceDao.deleteAll();
         } catch (Exception e) {
             System.out.println("Records have not been cleaned up.");
         }
