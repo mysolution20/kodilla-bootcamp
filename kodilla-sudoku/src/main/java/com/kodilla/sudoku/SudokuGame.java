@@ -5,12 +5,7 @@ public class SudokuGame {
         boolean gameFinished = false;
         while (!gameFinished) {
             SudokuGame theGame = new SudokuGame();
-            try {
                 gameFinished = theGame.resolveSudoku();
-            } catch (UncheckedException ue) {
-                System.out.println("Unchecked exception error: "+ ue.getMessage());
-                ue.printStackTrace();
-            }
         }
     }
 

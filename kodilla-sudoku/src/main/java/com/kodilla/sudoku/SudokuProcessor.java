@@ -18,6 +18,7 @@ public class SudokuProcessor {
                     break;
                 case NEW_GAME:
                     board.setStartElementOnNewGameBoard();
+                    break;
                 case NEW_VALUE:
                     boolean ifRepeat = board.checkIfEntryRepeat(choice.getColumn() - 1, choice.getRow() - 1, choice.getValue());
                     if (ifRepeat) {

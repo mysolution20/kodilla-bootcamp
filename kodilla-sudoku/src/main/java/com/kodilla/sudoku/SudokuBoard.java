@@ -1,11 +1,10 @@
 package com.kodilla.sudoku;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static com.kodilla.sudoku.Constants.*;
 
-public class SudokuBoard extends SudokuBoardPrototype {
+public class SudokuBoard {
 
     SudokuRow[] board = new SudokuRow[MAX_ROWS + 1];
 
@@ -198,18 +197,5 @@ public class SudokuBoard extends SudokuBoardPrototype {
     @Override
     public int hashCode() {
         return Arrays.hashCode(getBoard());
-    }
-
-    public SudokuBoard deepCopy() throws CloneNotSupportedException {
-//      SudokuBoard deepClonedBackTrackBoard = (SudokuBoard) super.clone();
-        SudokuBoard deepClonedBackTrackBoard = (SudokuBoard) this.clone();
-        deepClonedBackTrackBoard.board = new SudokuRow[MAX_ROWS + 1];
-        for (int i = 0; i < MAX_ROWS; i++) {
-            List<SudokuElement> elements = board[i].getSudokuElements();
-            for (int j = 0; j < elements.size(); j++) {
-                deepClonedBackTrackBoard.board[i].getSudokuElements().get(j).setValue(elements.get(j).getValue());
-            }
-        }
-        return deepClonedBackTrackBoard;
     }
 }
