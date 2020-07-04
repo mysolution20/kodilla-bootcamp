@@ -11,10 +11,10 @@ public class UserChoice {
         this.choiceType = choiceType;
     }
 
-    public UserChoice(int column, int row, int value) {
+    public UserChoice(int row, int column, int value) {
         this.choiceType = UserChoiceType.NEW_VALUE;
-        this.row = row;
-        this.column = column;
+        this.column = row;
+        this.row = column;
         this.value = value;
     }
 

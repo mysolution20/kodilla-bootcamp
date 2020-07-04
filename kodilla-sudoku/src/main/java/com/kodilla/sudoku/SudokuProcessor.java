@@ -20,7 +20,7 @@ public class SudokuProcessor {
                     board.setStartElementOnNewGameBoard();
                     break;
                 case NEW_VALUE:
-                    boolean ifRepeat = board.checkIfEntryRepeat(choice.getColumn() - 1, choice.getRow() - 1, choice.getValue());
+                    boolean ifRepeat = board.checkIfEntryRepeat(choice.getRow() - 1, choice.getColumn() - 1, choice.getValue());
                     if (ifRepeat) {
                         System.out.println("Current entered value will not solve the sudoku, please try again.");
                     } else {
@@ -39,7 +39,7 @@ public class SudokuProcessor {
 
     private void setValue(UserChoice choice) {
         try {
-            board.setValueToCell(choice.getColumn() - 1, choice.getRow() - 1, choice.getValue());
+            board.setValueToCell(choice.getRow() - 1, choice.getColumn() - 1, choice.getValue());
         } catch (Exception e) {
             MenuList.printIncorrectValueToSet(choice);
         }

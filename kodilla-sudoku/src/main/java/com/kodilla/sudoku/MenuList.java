@@ -26,10 +26,10 @@ public class MenuList {
             default:
                 if (isDigits && digitsCorrectLength) {
                     char[] inputTab = input.toCharArray();
-                    int column = Character.getNumericValue(inputTab[0]);
-                    int row = Character.getNumericValue(inputTab[1]);
+                    int row = Character.getNumericValue(inputTab[0]);
+                    int column = Character.getNumericValue(inputTab[1]);
                     int value = Character.getNumericValue(inputTab[2]);
-                    return new UserChoice(column, row, value);
+                    return new UserChoice(row, column, value);
                 } else {
                     return new UserChoice(UserChoiceType.NONE);
                 }
@@ -39,8 +39,8 @@ public class MenuList {
     private static UserChoice newGame() {
         boolean correctInput = false;
         do {
-        System.out.println("Do you want to start a new game? y/n");
-        String input = scanner.next();
+            System.out.println("Do you want to start a new game? y/n");
+            String input = scanner.next();
 
             if (input.equalsIgnoreCase("y")) {
                 correctInput = true;
@@ -58,8 +58,8 @@ public class MenuList {
     private static UserChoice exitGame() {
         boolean correctInput = false;
         do {
-        System.out.println("Do you want exit? y/n");
-        String input = scanner.next();
+            System.out.println("Do you want exit? y/n");
+            String input = scanner.next();
 
             if (input.equalsIgnoreCase("y")) {
                 correctInput = true;
