@@ -11,6 +11,10 @@ import java.util.List;
                 "WHERE LEFT(COMPANY_NAME,3) = :THREE_FIRST_SIGNS_COMPANY_NAME",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.retrieveCompaniesWithFragmentOfItsName",
+        query = "FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',:FRAGMENT_OF_COMPANY_NAME,'%')"
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
