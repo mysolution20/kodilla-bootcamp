@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompanyEmployeesFacade {
+public class CompanyEmployeesFacade  {
     @Autowired
     private CompanyDao companyDao;
     @Autowired
@@ -18,8 +18,8 @@ public class CompanyEmployeesFacade {
     public CompanyDao getCompanyDao() {
         return companyDao;
     }
+
     public EmployeeDao getEmployeeDao() {
         return employeeDao;
     }
-
 }

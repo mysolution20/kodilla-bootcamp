@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CompanyEmployeesFacadeTest  {
+public class CompanyEmployeesFacadeTest {
     @Autowired
     CompanyEmployeesFacade companyEmployeesFacade;
 
@@ -29,11 +29,12 @@ public class CompanyEmployeesFacadeTest  {
         janKowalki.getCompanies().add(biedronka);
 
         //When
+//        companyEmployeesFacade
         companyEmployeesFacade.getCompanyDao().save(biedronka);
         companyEmployeesFacade.getEmployeeDao().save(janKowalki);
 
-         List<Company> companiesWithFragmentOfItsName = companyEmployeesFacade.getCompanyDao().retrieveCompaniesWithFragmentOfItsName("edro");// Biedronka
-         List<Employee> employeesWithFragmentOfName = companyEmployeesFacade.getEmployeeDao().retrieveEmployeesWithFragmentOfName("walk");// Kowalki
+        List<Company> companiesWithFragmentOfItsName = companyEmployeesFacade.getCompanyDao().retrieveCompaniesWithFragmentOfItsName("edro");// Biedronka
+        List<Employee> employeesWithFragmentOfName = companyEmployeesFacade.getEmployeeDao().retrieveEmployeesWithFragmentOfName("walk");// Kowalki
 
         //Then
         Assert.assertEquals(1, companiesWithFragmentOfItsName.size());
