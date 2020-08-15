@@ -12,4 +12,14 @@ public class CompanyEmployeesFacade {
     @Autowired
     private EmployeeDao employeeDao;
 
+    public CompanyEmployeesFacade() {
+    }
+
+    public CompanyDao getCompanyDao() {
+        return companyDao;
+    }
+    public EmployeeDao getEmployeeDao() {
+        return employeeDao;
+    }
+
 }
