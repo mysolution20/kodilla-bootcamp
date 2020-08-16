@@ -29,20 +29,18 @@ public class CompanyEmployeesFacadeTest {
         janKowalki.getCompanies().add(biedronka);
 
         //When
-//        companyEmployeesFacade
-        companyEmployeesFacade.getCompanyDao().save(biedronka);
-        companyEmployeesFacade.getEmployeeDao().save(janKowalki);
+        companyEmployeesFacade.companyFacadeSave(biedronka);
+        companyEmployeesFacade.employeeFacaseSave(janKowalki);
 
-        List<Company> companiesWithFragmentOfItsName = companyEmployeesFacade.getCompanyDao().retrieveCompaniesWithFragmentOfItsName("edro");// Biedronka
-        List<Employee> employeesWithFragmentOfName = companyEmployeesFacade.getEmployeeDao().retrieveEmployeesWithFragmentOfName("walk");// Kowalki
-
+        List<Company> companiesWithFragmentOfItsName = companyEmployeesFacade.getCompaniesWithFragmentOfItsName("edro"); // biedronka
+        List<Employee> employeesWithFragmentOfName = companyEmployeesFacade.getEmployeesWithFragmentOfName("walk");// Kowalki
         //Then
         Assert.assertEquals(1, companiesWithFragmentOfItsName.size());
         Assert.assertEquals(1, employeesWithFragmentOfName.size());
 
         try {
-            companyEmployeesFacade.getCompanyDao().deleteAll();
-            companyEmployeesFacade.getEmployeeDao().deleteAll();
+            companyEmployeesFacade.deleteAllEmployee();
+            companyEmployeesFacade.deleteAllCompany();
         } finally {
             //CleanUp
             System.out.println("All records have cleaned up by: companyEmployeesFacade");
