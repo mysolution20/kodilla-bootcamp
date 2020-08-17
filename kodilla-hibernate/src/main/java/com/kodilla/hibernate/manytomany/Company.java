@@ -5,6 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * NamedNativeQuery  --> nativ z bazy SQL tabeli @Table(name = "COMPANIES") dlatego 'COMPANIES'
+ */
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithThreeFirstSigns",
         query = "SELECT * FROM COMPANIES " +
@@ -13,8 +16,11 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Company.retrieveCompaniesWithFragmentOfItsName",
-        query = "FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT('%',:FRAGMENT_OF_COMPANY_NAME,'%')"
+        query = "FROM Company WHERE COMPANY_NAME LIKE CONCAT('%',:FRAGMENT_OF_COMPANY_NAME,'%')"
 )
+/**
+ * @NamedQuery --> nie nativ piszemy z encji (czyt.class)  dlatego 'Company'
+ */
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
