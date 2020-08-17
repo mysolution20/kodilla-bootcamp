@@ -1,6 +1,6 @@
 package com.kodillla.patterns2.decorator.taxiportal;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TaxiOrderTestSuite {
     @Test
-    void testBasicTaxiOrderGetCost() {
+    public void testBasicTaxiOrderGetCost() {
         //Given
         TaxiOrder theOrder = new BasicTaxiOrder();
 
@@ -20,7 +20,7 @@ public class TaxiOrderTestSuite {
     }
 
     @Test
-    void testBasicTaxiOrderGetDescription() {
+    public void testBasicTaxiOrderGetDescription() {
         //Given
         TaxiOrder theOrder = new BasicTaxiOrder();
 
@@ -32,19 +32,35 @@ public class TaxiOrderTestSuite {
     }
 
     @Test
-    void testTaxiNetworkGetCost() {
+    public void testTaxiNetworkGetCost() {
         //Given
         TaxiOrder theOrder = new BasicTaxiOrder();
         theOrder = new TaxiNetworkOrderDecorator(theOrder);
         // When
-        BigDecimal cost = theOrder.getCost();
-        //
-
-
+        BigDecimal theCost = theOrder.getCost();
+        // Then
+        assertEquals(new BigDecimal(40), theCost);
     }
 
     @Test
-    void testTaxiNetworkGetDescription() {
+    public  void testTaxiNetworkGetDescription() {
+        //Given
+        TaxiOrder theOrder = new BasicTaxiOrder();
+        theOrder = new TaxiNetworkOrderDecorator(theOrder);
+        // When
+        String description = theOrder.getDescription();
+        // Then
+        assertEquals("Drive a course by Taxi Network", description);
+    }
+
+    @Test
+    public void testMyTaxiWithChildSeatGetCost() {
+        //Given
+        TaxiOrder theOrder = new BasicTaxiOrder();
+
+        // When
+
+        // Then
 
     }
 }
