@@ -2,10 +2,13 @@ package com.kodillla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
 
-public class BasicPizzaOrder implements  PizzaOrder{
+public class BasicPizzaOrder implements PizzaOrder {
+    /**
+     * dlaczego tu: BigDecimal.valueOf(15.00) nie natomiast, jako: new BigDecimal(15.00) ?
+     */
     @Override
     public BigDecimal getPrice() {
-         return new BigDecimal(15.00);
+        return BigDecimal.valueOf(15.00);
     }
 
     @Override

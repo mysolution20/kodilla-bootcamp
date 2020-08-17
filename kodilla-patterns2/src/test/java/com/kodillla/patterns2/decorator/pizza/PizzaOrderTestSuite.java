@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
-public class PizzaOrderTestSuite  {
+public class PizzaOrderTestSuite {
 
     @Test
     public void testBasicPizzaOrderGetCost() {
@@ -17,6 +17,7 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals(new BigDecimal(15), calculatedPrice);
     }
+
     @Test
     public void testBasicPizzaOrderGetIngredients() {
         //Given
@@ -37,6 +38,7 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals(new BigDecimal(25), calculatedPrice);
     }
+
     @Test
     public void testBasicPizzaOrderGetIngredientsBigVariant() {
         //Given
@@ -47,6 +49,7 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals("Pizza: dough and tomato sauce with cheese: big variant", ingredients);
     }
+
     @Test
     public void testBasicPizzaOrderGetCostMediumVariant() {
         //Given
@@ -57,6 +60,7 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals(new BigDecimal(20), calculatedPrice);
     }
+
     @Test
     public void testBasicPizzaOrderGetIngredientsMediumVariant() {
         //Given
@@ -67,9 +71,10 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals("Pizza: dough and tomato sauce with cheese: medium variant", ingredients);
     }
+
     /**
-     15       5      10        3           4        3           2
-     basic  medium   big   extra cheese   salami   aruqula   ExtraSauce
+     * 15       5      10        3           4        3           2
+     * basic  medium   big   extra cheese   salami   aruqula   ExtraSauce
      */
     @Test
     public void testBasicPizzaOrderGetCostBigVariantExtraCheeseDoubleSalamiExtraSauceAndArugula() {
@@ -87,6 +92,7 @@ public class PizzaOrderTestSuite  {
         //Then
         assertEquals(new BigDecimal(41), calculatedPrice);
     }
+
     @Test
     public void testBasicPizzaOrderGetIngredientsBigVariantExtraCheeseDoubleSalamiExtraSauceAndArugula() {
         //Given

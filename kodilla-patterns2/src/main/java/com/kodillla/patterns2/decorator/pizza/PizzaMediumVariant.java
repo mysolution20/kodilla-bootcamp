@@ -2,7 +2,7 @@ package com.kodillla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
 
-public class PizzaMediumVariant extends AbstractPizzaOrderDecorator{
+public class PizzaMediumVariant extends AbstractPizzaOrderDecorator {
     public PizzaMediumVariant(PizzaOrder pizzaOrder) {
         super(pizzaOrder);
     }
@@ -14,6 +14,6 @@ public class PizzaMediumVariant extends AbstractPizzaOrderDecorator{
 
     @Override
     public String getIngredients() {
-        return super.getIngredients()+": medium variant";
+        return super.getIngredients() + ": medium variant";
     }
 }

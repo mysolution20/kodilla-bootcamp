@@ -14,6 +14,6 @@ public class ExtraSauce extends AbstractPizzaOrderDecorator {
 
     @Override
     public String getIngredients() {
-        return super.getIngredients()+" + extra sauce";
+        return super.getIngredients() + " + extra sauce";
     }
 }
