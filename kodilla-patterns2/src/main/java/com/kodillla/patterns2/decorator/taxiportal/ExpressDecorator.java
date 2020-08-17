@@ -2,8 +2,8 @@ package com.kodillla.patterns2.decorator.taxiportal;
 
 import java.math.BigDecimal;
 
-public class ChildSeatDecorator extends AbstractTaxiOrderDecorator {
-    public ChildSeatDecorator(TaxiOrder taxiOrder) {
+public class ExpressDecorator extends AbstractTaxiOrderDecorator {
+    public ExpressDecorator(TaxiOrder taxiOrder) {
         super(taxiOrder);
     }
 
@@ -14,6 +14,6 @@ public class ChildSeatDecorator extends AbstractTaxiOrderDecorator {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + " + child seat";
+        return super.getDescription() + " express service";
     }
 }
