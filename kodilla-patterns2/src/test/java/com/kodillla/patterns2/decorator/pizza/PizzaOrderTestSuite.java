@@ -15,7 +15,7 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal calculatedPrice = theOrder.getPrice();
         //Then
-        assertEquals(new BigDecimal(15), calculatedPrice);
+        assertEquals(BigDecimal.valueOf(15.0), calculatedPrice);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal calculatedPrice = theOrder.getPrice();
         //Then
-        assertEquals(new BigDecimal(25), calculatedPrice);
+        assertEquals(BigDecimal.valueOf(25.0), calculatedPrice);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal calculatedPrice = theOrder.getPrice();
         //Then
-        assertEquals(new BigDecimal(20), calculatedPrice);
+        assertEquals(BigDecimal.valueOf(20.0), calculatedPrice);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class PizzaOrderTestSuite {
         //When
         BigDecimal calculatedPrice = theOrder.getPrice();
         //Then
-        assertEquals(new BigDecimal(41), calculatedPrice);
+        assertEquals(BigDecimal.valueOf(41.0), calculatedPrice);
     }
 
     @Test

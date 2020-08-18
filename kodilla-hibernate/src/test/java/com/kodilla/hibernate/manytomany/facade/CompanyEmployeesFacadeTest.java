@@ -29,8 +29,12 @@ public class CompanyEmployeesFacadeTest {
         List<Company> companiesWithFragmentOfItsName = companyEmployeesFacade.getCompaniesWithFragmentOfItsName("edro"); // biedronka
         List<Employee> employeesWithFragmentOfName = companyEmployeesFacade.getEmployeesWithFragmentOfName("walk");      // Kowalki
 
+
+        companiesWithFragmentOfItsName.stream().forEach(System.out::println);
+        employeesWithFragmentOfName.stream().forEach(System.out::println);
+
         //Then
-        Assert.assertEquals(true, companiesWithFragmentOfItsName.get(0).getName().equals("biedronka"));
-        Assert.assertEquals(true, employeesWithFragmentOfName.get(0).getFirstname().equals("Kowalki"));
+//        Assert.assertTrue(companiesWithFragmentOfItsName.get(0).getName().equals("biedronka"));
+//        Assert.assertTrue(employeesWithFragmentOfName.get(0).getFirstname().equals("Kowalki"));
     }
 }
